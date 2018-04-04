@@ -4,8 +4,8 @@ const dotenv = require('dotenv')
 
 function getAuthToken () {
     const authenticationData = {
-        Username : process.env.USERNAME,
-        Password : process.env.PASSWORD
+        Username : process.env.EMVIO_USERNAME,
+        Password : process.env.EMVIO_PASSWORD
     };
     const authenticationDetails = new AuthenticationDetails(authenticationData);
     const poolData = {
