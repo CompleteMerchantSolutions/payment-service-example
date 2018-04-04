@@ -1,0 +1,22 @@
+{
+  "name": "plugin-example-project",
+  "version": "1.0.0",
+  "description": "Guide for integrating with Emvio plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/emvio/plugin-example-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/emvio/plugin-example-project#readme",
+  "dependencies": {
+    "amazon-cognito-identity-js": "^2.0.3",
+    "aws-sdk": "^2.220.1",
+    "dotenv": "^5.0.1",
+    "npm": "^5.8.0"
+  }
+}
