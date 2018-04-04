@@ -1,9 +1,8 @@
 const AWS = require('aws-sdk');
-const { CognitoUserPool, AuthenticationDetails, CognitoUser } = require('amazon-cognito-identity-js');
+const { CognitoUserPool, AuthenticationDetails, CognitoUser } = require('amazon-cognito-identity-js-node');
 const dotenv = require('dotenv')
 
 function getAuthToken () {
-    console.log(process.env)
     const authenticationData = {
         Username : process.env.USERNAME,
         Password : process.env.PASSWORD
@@ -22,10 +21,10 @@ function getAuthToken () {
 
     cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
-            // result.idToken.jwtToken
+            console.log(result.idToken.jwtToken)
         },
         onFailure: function(err) {
-            // handle err
+            console.error(err)
         }
     });
 };
