@@ -15,7 +15,7 @@
 
         iframe {
             width: 100%;
-            height: 100%;
+            height: 50%;
             border: 0;
             display: none;
         }
@@ -36,11 +36,10 @@
 </div>
 
 <script>
-
     const myForm = window.document.getElementById('myForm');
 
-    const saveCardUrl = 'https://api.emviodev.com/pay/v3/saveCard'
-    const iframeDomain = saveCardUrl.match(/^http(s?):\/\/.*?(?=\/)/)[0];
+    const iframeUrl = 'https://api.emviodev.com/pay/v3/'
+    const iframeDomain = iframeUrl.match(/^http(s?):\/\/.*?(?=\/)/)[0];
 
     window.addEventListener('message', function messageListener(event) {
         if (event.origin === iframeDomain) {
@@ -59,13 +58,13 @@
         fetch('http://localhost:3400/getToken').then(function (response) {
             return response.text();
         }).then(function (response) {
-            const iframe = `${saveCardUrl}?token=${response}`;
+            const iframe = `${iframeUrl}?token=${response}`;
             window.document.getElementById('iframe1').src = iframe;
             return window.document.getElementById('iframe1');
         }).then((iframe) => {
             myForm.addEventListener('submit', function processPayment(event) {
                 event.preventDefault();
-                iframe.contentWindow.postMessage('posted', saveCardUrl);
+                iframe.contentWindow.postMessage('posted', iframeUrl);
                 return false;
             });
         }).catch((err) => {
