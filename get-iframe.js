@@ -29,8 +29,8 @@ async function getOneTimeUseToken (authToken) {
 
 function getAuthToken () {
     const authenticationData = {
-        Username : process.env.USERNAME,
-        Password : process.env.PASSWORD
+        Username : process.env.EMVIO_USERNAME,
+        Password : process.env.EMVIO_PASSWORD
     };
     const authenticationDetails = new AuthenticationDetails(authenticationData);
     const poolData = {
@@ -75,4 +75,4 @@ app.get('/', async (req, res) => {
 })
 
 const PORT = 3400
-app.listen(PORT, () => console.log('Example app listening on port ${PORT}!'))
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))

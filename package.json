@@ -4,6 +4,7 @@
   "description": "Guide for integrating with Emvio plugin",
   "main": "index.js",
   "scripts": {
+    "start": "node get-iframe.js",
     "test": "test",
     "serve": "nodemon get-iframe.js"
   },
