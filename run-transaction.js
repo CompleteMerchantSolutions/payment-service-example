@@ -8,7 +8,7 @@ const {
 
 dotenv.config();
 
-function getAuthToken() {
+function getJWT() {
     const authenticationData = {
         Username: process.env.EMVIO_USERNAME,
         Password: process.env.EMVIO_PASSWORD
@@ -38,7 +38,7 @@ function getAuthToken() {
 }
 
 async function runTransaction() {
-    const authToken = await getAuthToken();
+    const jwt = await getJWT();
     const postBody = {
         merchantId: process.env.MERCHANT_ID,
         tokenex: {
@@ -57,7 +57,7 @@ async function runTransaction() {
     };
     const config = {
         headers: {
-            Authorization: authToken
+            Authorization: jwt
         }
     };
     const { data } = await axios.post('https://api.emviodev.com/pay/v3/process', postBody, config);
