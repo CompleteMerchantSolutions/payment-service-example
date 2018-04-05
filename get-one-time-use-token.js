@@ -2,14 +2,12 @@ const axios = require('axios');
 const dotenv = require('dotenv');
 
 function getOneTimeUseToken() {
-    const testMerchantId = 888886
-    const gatewayName = 'usaepay' // Can also be set to "nmi"
     return axios.post(
         'https://api.emviodev.com/pay/v3/token',
         {
-            merchantId: testMerchantId,
+            merchantId: process.env.MERCHANT_ID,
             gateway: {
-                name: gatewayName
+                name: process.env.GATEWAY_NAME
             },
             data: {
                 amount: 50.5
