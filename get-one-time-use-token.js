@@ -17,7 +17,7 @@ function getOneTimeUseToken() {
         },
         {
             headers: {
-                Authorization: process.env.AUTH_TOKEN
+                Authorization: process.env.JWT
             }
         }
     );
