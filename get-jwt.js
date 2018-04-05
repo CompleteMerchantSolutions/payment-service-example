@@ -2,7 +2,7 @@ const AWS = require('aws-sdk');
 const { CognitoUserPool, AuthenticationDetails, CognitoUser } = require('amazon-cognito-identity-js-node');
 const dotenv = require('dotenv')
 
-function getAuthToken () {
+function getJWT () {
     const authenticationData = {
         Username : process.env.EMVIO_USERNAME,
         Password : process.env.EMVIO_PASSWORD
@@ -30,4 +30,4 @@ function getAuthToken () {
 };
 
 dotenv.config()
-getAuthToken()
+getJWT()

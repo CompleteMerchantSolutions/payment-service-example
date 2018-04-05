@@ -6,7 +6,7 @@ const { CognitoUserPool, AuthenticationDetails, CognitoUser } = require('amazon-
 
 dotenv.config()
 
-async function getOneTimeUseToken (authToken) {
+async function getOneTimeUseToken (jwt) {
     const { data } = await axios.post(
         'https://api.emviodev.com/pay/v3/token',
         {
@@ -20,14 +20,14 @@ async function getOneTimeUseToken (authToken) {
         },
         {
             headers: {
-                Authorization: authToken
+                Authorization: jwt
             }
         }
     );
     return data.token
 }
 
-function getAuthToken () {
+function getJWT () {
     const authenticationData = {
         Username : process.env.EMVIO_USERNAME,
         Password : process.env.EMVIO_PASSWORD
@@ -58,8 +58,8 @@ function getAuthToken () {
 
 app.get('/getToken', async (req, res) => {
     try {
-        const authToken = await getAuthToken()
-        const oneTimeUseToken = await getOneTimeUseToken(authToken)
+        const jwt = await getJWT()
+        const oneTimeUseToken = await getOneTimeUseToken(jwt)
         res.status(200).send(oneTimeUseToken)
     } catch (err) {
         console.error(err)
