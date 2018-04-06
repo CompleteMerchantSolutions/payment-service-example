@@ -1,0 +1,48 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:jasmine/recommended"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "node": true,
+    "es6": true,
+    "jest": true,
+    "jasmine": true
+  },
+  "plugins": [
+    "import",
+    "jasmine"
+  ],
+  "rules": {
+    "arrow-parens": ["error"],
+    "arrow-spacing": "error",
+    "brace-style": "error",
+    "comma-dangle": ["error", "never"],
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "eqeqeq": "error",
+    "import/newline-after-import": ["error", { "count": 1 }],
+    "indent": [2, 4, { "SwitchCase": 1, "VariableDeclarator": 2 }],
+    "keyword-spacing": ["error", { "before": true }],
+    "no-confusing-arrow": ["error", { "allowParens": true }],
+    "no-console": ["warn", { "allow": ["error"] }],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    "no-trailing-spaces": "error",
+    "no-unused-vars": "error",
+    "object-curly-spacing": ["error", "always"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "semi-spacing": ["error", {"before": false, "after": true}],
+    "space-in-parens": ["error", "never"],
+    "space-infix-ops": ["error", {"int32Hint": true}],
+    "space-before-blocks": "error",
+    "jasmine/no-focused-tests": "warn",
+    "jasmine/prefer-toHaveBeenCalledWith": "off",
+    "jasmine/no-spec-dupes": ["error", "branch"]
+  }
+}

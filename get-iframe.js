@@ -1,10 +1,10 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+
+const app = express();
 const axios = require('axios');
 const dotenv = require('dotenv');
-const { CognitoUserPool, AuthenticationDetails, CognitoUser } = require('amazon-cognito-identity-js-node');
 
-dotenv.config()
+dotenv.config();
 
 async function getOneTimeUseToken (jwt) {
     const { data } = await axios.post(
@@ -24,55 +24,38 @@ async function getOneTimeUseToken (jwt) {
             }
         }
     );
-    return data.token
+    return data.token;
 }
 
-function getJWT () {
-    const authenticationData = {
-        Username : process.env.EMVIO_USERNAME,
-        Password : process.env.EMVIO_PASSWORD
-    };
-    const authenticationDetails = new AuthenticationDetails(authenticationData);
-    const poolData = {
-        UserPoolId : process.env.USER_POOL_ID,
-        ClientId : process.env.CLIENT_ID
-    };
-    const userPool = new CognitoUserPool(poolData);
-    const userData = {
-        Username : authenticationData.Username,
-        Pool : userPool
-    };
-    const cognitoUser = new CognitoUser(userData);
-
-    return new Promise((resolve, reject) => {
-        cognitoUser.authenticateUser(authenticationDetails, {
-            onSuccess: function (result) {
-                resolve(result.idToken.jwtToken)
-            },
-            onFailure: function(err) {
-                reject(err)
-            }
-        });
-    })
-};
+async function getJWT () {
+    const { data } = await axios.post(
+        'https://api.emviodev.com/user/v3/login',
+        {
+            username: process.env.EMVIO_USERNAME,
+            password: process.env.EMVIO_PASSWORD
+        }
+    );
+    return data.token;
+}
 
 app.get('/getToken', async (req, res) => {
     try {
-        const jwt = await getJWT()
-        const oneTimeUseToken = await getOneTimeUseToken(jwt)
-        res.status(200).send(oneTimeUseToken)
+        const jwt = await getJWT();
+        const oneTimeUseToken = await getOneTimeUseToken(jwt);
+        res.status(200).send(oneTimeUseToken);
     } catch (err) {
-        console.error(err)
-        res.status(500).send('An error while retrieving "card save" template')
+        console.error(err);
+        res.status(500).send('An error while retrieving "card save" template');
     }
-})
+});
 
-app.use('/example', express.static('templates'))
-app.use('/examples', express.static('templates'))
+app.use('/example', express.static('templates'));
+app.use('/examples', express.static('templates'));
 
 app.get('/', async (req, res) => {
-    res.status(200).send('Welcome to Emvio! Visit /example to get started.')
-})
+    res.status(200).send('Welcome to Emvio! Visit /example to get started.');
+});
 
-const PORT = 3400
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
+const PORT = 3400;
+//eslint-disable-next-line no-console
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
