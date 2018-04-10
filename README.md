@@ -9,11 +9,11 @@
 2. Go to location of the source directory:
 
     > cd emvio-payment-service-examples
-    
+
 3. Install Node modules:
 
     > npm install
-    
+
 4. Copy example.env and save as .env:
 
     > cp example.env .env
@@ -33,10 +33,9 @@
 
 ## Use the JWT to Get a One Time Use Token
 1. Update the following variables in .env:
- * **MERCHANT_ID** (The merchant id assigned to you from CMS)
- * **GATEWAY_NAME** (The name of the gateway to be used to run the transaction, e.g. 'usaepay', 'nmi')
- * **JWT** (The JSON Web Token from the previous step.)
- <!--* [step](https://developer.emvio.com/##obtain-authorization-token) this link doesn't work...-->
+    * **MERCHANT_ID** (The merchant id assigned to you from CMS)
+    * **GATEWAY_NAME** (The name of the gateway to be used to run the transaction, e.g. 'usaepay', 'nmi')
+    * **JWT** (The JSON Web Token from the previous step.)
 2. Run get-one-time-use-token.js:
 
   `> node get-one-time-use-token.js`
