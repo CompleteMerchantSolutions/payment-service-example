@@ -40,7 +40,7 @@
 3. This script will print out your one time use token. This token can be used for retrieving the saveCard and makePayment iframes.
 
 # Plugin: Run Transaction
-1. Follow the steps in the [Getting Started](https://developer.emvio.com/#plugin-getting-started) section.
+1. Follow the steps in the [Getting Started](#plugin-getting-started) section.
 2. Start the example server:
 
   `npm run start`
@@ -92,7 +92,7 @@
   * (Note that this token expires after one hour.)
 
 # API: Run Transaction
-1. Follow the steps in the [Getting Started](https://developer.emvio.com/#api-getting-started) section.
+1. Follow the steps in the [Getting Started](#api-getting-started) section.
 2. Update the following variable in .env:
  * **TOKENEX_TOKEN** (add description here)
  * (Do merchants always need to save cards before they can do this step?)
@@ -100,7 +100,7 @@
 
   `node run-transaction.js`
 # API: Refund/Void
-1. Follow the steps in the [Getting Started](https://developer.emvio.com/#api-getting-started) section.
+1. Follow the steps in the [Getting Started](#api-getting-started) section.
 2. Update the following variables in .env:
  * **TOKENEX_TOKEN** (add description here)
  * (Do merchants always need to save cards before they can do this step?)
