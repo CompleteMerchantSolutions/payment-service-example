@@ -19,17 +19,17 @@
     > cp example.env .env
 
 5. Update the following variables in .env:
- * **EMVIO_USERNAME** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) username)
- * **EMVIO_PASSWORD** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) password)
- * **USER_POOL_ID** (Provided in your onboarding email from CMS)
- * **CLIENT_ID** (Provided in your onboarding email from CMS)
+    * **EMVIO_USERNAME** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) username)
+    * **EMVIO_PASSWORD** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) password)
+    * **USER_POOL_ID** (Provided in your onboarding email from CMS)
+    * **CLIENT_ID** (Provided in your onboarding email from CMS)
 
   If you have questions about any of these variables please contact us via the [Emvio Support Slack Channel](https://emviosupport.slack.com).
 6. Run Get Json Web Token (JWT):
 
   `> node get-jwt.js`
- * This script will print your JSON Web Token to the console. This token will be used in the next step to create a one time use token.
-  * (Note that this token expires after one hour.)
+    * This script will print your JSON Web Token to the console. This token will be used in the next step to create a one time use token.
+    * (Note that this token expires after one hour.)
 
 ## Use the JWT to Get a One Time Use Token
 1. Update the following variables in .env:
