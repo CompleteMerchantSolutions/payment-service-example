@@ -26,7 +26,8 @@
 
 6. Run Get Json Web Token (JWT):
 
-  `> node get-jwt.js`
+    > node get-jwt.js
+
     * This script will print your JSON Web Token to the console. This token will be used in the next step to create a one time use token.
     * (Note that this token expires after one hour.)
 
