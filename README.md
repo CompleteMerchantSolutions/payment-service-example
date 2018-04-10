@@ -51,7 +51,7 @@
 5. (Include more information about what's happening and how to run it on their own website.)
 
 # Plugin: Save Card
-1. Follow the steps in the [Getting Started](https://developer.emvio.com/#plugin-getting-started) section.
+1. Follow the steps in the [Getting Started](#plugin-getting-started) section.
 2. Start the example server:
 
   `npm run start`
