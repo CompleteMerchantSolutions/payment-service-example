@@ -8,7 +8,9 @@
 1. Clone or download the example [source](https://bitbucket.org/emvio/payment-service-examples/downloads/) and unzip.
 2. Go to location of the source directory:
 
+    ```javascript
     > cd emvio-payment-service-examples
+    ```
 3. Install Node modules:
 
     > npm install
