@@ -58,9 +58,10 @@
 1. Follow the steps in the [Getting Started](#plugin-getting-started) section.
 2. Start the example server:
 
-  `npm run start`
+    npm run start
 
-  This starts a local server running on port 3400.
+    This starts a local server running on port 3400.
+
 3. To load the example iframe for running a transaction visit: [localhost:3400/examples/saveCard.html](http://localhost:3400/examples/saveCard.html)
 4. The iframe is now embedded in this website and can be used to save a card and customer information.
 5. (Include more information about what's happening and how to run it on their own website.)
