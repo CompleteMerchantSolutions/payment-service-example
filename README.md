@@ -33,23 +33,23 @@
 
 ## Use the JWT to Get a One Time Use Token
 1. Update the following variables in .env:
-
     * **MERCHANT_ID** (The merchant id assigned to you from CMS)
     * **GATEWAY_NAME** (The name of the gateway to be used to run the transaction, e.g. 'usaepay', 'nmi')
     * **JWT** (The JSON Web Token from the previous step.)
-
 2. Run get-one-time-use-token.js:
 
-  `> node get-one-time-use-token.js`
+    > node get-one-time-use-token.js
+
 3. This script will print out your one time use token. This token can be used for retrieving the saveCard and makePayment iframes.
 
 # Plugin: Run Transaction
 1. Follow the steps in the [Getting Started](#plugin-getting-started) section.
 2. Start the example server:
 
-  `npm run start`
+    npm run start
 
-  This starts a local server running on port 3400.
+    This starts a local server running on port 3400.
+
 3. To load the example iframe for running a transaction visit:  [localhost:3400/examples/makePayment.html](http://localhost:3400/examples/makePayment.html)
 4. The iframe is now embedded in this website and can be used to process a transaction.
 5. (Include more information about what's happening and how to run it on their own website.)
