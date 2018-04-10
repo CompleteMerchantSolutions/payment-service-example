@@ -15,6 +15,7 @@
 4. Copy example.env and save as .env:
 
   `> cp example.env .env`
+
 5. Update the following variables in .env:
  * **EMVIO_USERNAME** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) username)
  * **EMVIO_PASSWORD** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) password)
