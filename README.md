@@ -91,6 +91,7 @@
     * **EMVIO_PASSWORD** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) password)
 
     If you have questions about any of these variables please contact us via the [Emvio Support Slack Channel](https://emviosupport.slack.com).
+
 6. Run Get Json Web Token (JWT):
 
     > node get-jwt.js
