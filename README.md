@@ -11,10 +11,10 @@
   `> cd emvio-payment-service-examples`
 3. Install Node modules:
 
-  `> npm install`
+    > npm install
 4. Copy example.env and save as .env:
 
-  `> cp example.env .env`
+    > cp example.env .env
 
 5. Update the following variables in .env:
  * **EMVIO_USERNAME** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) username)
