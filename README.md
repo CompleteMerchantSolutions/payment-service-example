@@ -58,7 +58,7 @@
 1. Follow the steps in the [Getting Started](#plugin-getting-started) section.
 2. Start the example server:
 
-    npm run start
+    > npm run start
 
     This starts a local server running on port 3400.
 
