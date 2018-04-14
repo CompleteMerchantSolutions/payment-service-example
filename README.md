@@ -19,8 +19,8 @@
     > cp example.env .env
 
 5. Update the following variables in .env:
-    * **EMVIO_USERNAME** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) username)
-    * **EMVIO_PASSWORD** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) password)
+    * **USERNAME** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) username)
+    * **PASSWORD** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) password)
 
     If you have questions about any of these variables please contact us via the [Emvio Support Slack Channel](https://emviosupport.slack.com).
 
@@ -87,8 +87,8 @@
     > cp example.env .env
 
 5. Update the following variables in .env:
-    * **EMVIO_USERNAME** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) username)
-    * **EMVIO_PASSWORD** (Your [dashboard.emvio.com](https://dashboard.emvio.com/) password)
+    * **USERNAME** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) username)
+    * **PASSWORD** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) password)
 
     If you have questions about any of these variables please contact us via the [Emvio Support Slack Channel](https://emviosupport.slack.com).
 

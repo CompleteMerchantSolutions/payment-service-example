@@ -10,8 +10,8 @@ dotenv.config();
 
 function getJWT() {
     const authenticationData = {
-        Username: process.env.EMVIO_USERNAME,
-        Password: process.env.EMVIO_PASSWORD
+        Username: process.env.USERNAME,
+        Password: process.env.PASSWORD
     };
     const authenticationDetails = new AuthenticationDetails(authenticationData);
     const poolData = {

@@ -31,8 +31,8 @@ async function getJWT () {
     const { data } = await axios.post(
         'https://api.emviodev.com/user/v3/login',
         {
-            username: process.env.EMVIO_USERNAME,
-            password: process.env.EMVIO_PASSWORD
+            username: process.env.USERNAME,
+            password: process.env.PASSWORD
         }
     );
     return data.token;
