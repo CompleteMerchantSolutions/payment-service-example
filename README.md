@@ -5,10 +5,10 @@
  * To install via an installer: visit the following [link](https://nodejs.org/en/download/) and download your system's installer.
 
 ## Obtain JSON Web Token (JWT)
-1. Clone or download the example [source](https://bitbucket.org/emvio/payment-service-examples/downloads/) and unzip.
+1. Clone or download the example [source](hhttps://github.com/transactionplatform/payment-service-example/downloads/) and unzip.
 2. Go to location of the source directory:
 
-    > cd emvio-payment-service-examples
+    > cd payment-service-examples
 
 3. Install Node modules:
 
@@ -21,8 +21,6 @@
 5. Update the following variables in .env:
     * **USERNAME** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) username)
     * **PASSWORD** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) password)
-
-    If you have questions about any of these variables please contact us via the [Emvio Support Slack Channel](https://emviosupport.slack.com).
 
 6. Run Get Json Web Token (JWT):
 
@@ -73,10 +71,10 @@
  * To install via an installer: visit the following [link](https://nodejs.org/en/download/) and download your system's installer.
 
 ## Obtain JSON Web Token (JWT)
-1. Clone or download the example [source](https://bitbucket.org/emvio/payment-service-examples/downloads/) and unzip.
+1. Clone or download the example [source](https://github.com/transactionplatform/payment-service-example/downloads/) and unzip.
 2. Go to location of the source directory:
 
-    > cd emvio-payment-service-examples
+    > cd payment-service-examples
 
 3. Install Node modules:
 
@@ -90,7 +88,6 @@
     * **USERNAME** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) username)
     * **PASSWORD** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) password)
 
-    If you have questions about any of these variables please contact us via the [Emvio Support Slack Channel](https://emviosupport.slack.com).
 
 6. Run Get Json Web Token (JWT):
 

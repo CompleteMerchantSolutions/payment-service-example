@@ -10,7 +10,7 @@ dotenv.config();
 
 function getJWT() {
     const authenticationData = {
-        Username: process.env.USERNAME,
+        Username: process.env.API_USERNAME,
         Password: process.env.PASSWORD
     };
     const authenticationDetails = new AuthenticationDetails(authenticationData);
