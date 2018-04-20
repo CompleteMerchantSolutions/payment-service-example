@@ -60,7 +60,7 @@ async function runTransaction() {
             Authorization: jwt
         }
     };
-    const { data } = await axios.post('https://api.emviodev.com/pay/v3/process', postBody, config);
+    const { data } = await axios.post(process.env.API_URL + 'pay/v3/process', postBody, config);
 
     return data;
 }
