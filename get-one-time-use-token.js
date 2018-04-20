@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 function getOneTimeUseToken() {
     return axios.post(
-        'https://api.emviodev.com/pay/v3/token',
+        process.env.API_URL + 'pay/v3/token',
         {
             merchantId: process.env.MERCHANT_ID,
             gateway: {
@@ -15,7 +15,7 @@ function getOneTimeUseToken() {
         },
         {
             headers: {
-                Authorization: process.env.JWT
+                Authorization: process.env.JWT,
             }
         }
     );

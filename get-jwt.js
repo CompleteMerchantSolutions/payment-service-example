@@ -3,13 +3,13 @@ const axios = require('axios');
 
 async function getJWT () {
     const { data } = await axios.post(
-        'https://api.emviodev.com/user/v3/login',
+        process.env.API_URL + 'user/v3/login',
         {
             username: process.env.API_USERNAME,
             password: process.env.PASSWORD
         }
     );
-    return data.token;
+    return data.idToken;
 }
 
 dotenv.config();

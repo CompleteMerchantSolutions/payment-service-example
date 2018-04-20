@@ -8,7 +8,7 @@ dotenv.config();
 
 async function getOneTimeUseToken (jwt) {
     const { data } = await axios.post(
-        'https://api.emviodev.com/pay/v3/token',
+        process.env.API_URL + 'pay/v3/token',
         {
             merchantId: process.env.MERCHANT_ID,
             gateway: {
@@ -20,7 +20,7 @@ async function getOneTimeUseToken (jwt) {
         },
         {
             headers: {
-                Authorization: jwt
+                Authorization: process.env.JWT,
             }
         }
     );
@@ -29,13 +29,13 @@ async function getOneTimeUseToken (jwt) {
 
 async function getJWT () {
     const { data } = await axios.post(
-        'https://api.emviodev.com/user/v3/login',
+        process.env.API_URL + 'user/v3/login',
         {
             username: process.env.API_USERNAME,
             password: process.env.PASSWORD
         }
     );
-    return data.token;
+    return data.idToken;
 }
 
 app.get('/getToken', async (req, res) => {
@@ -53,7 +53,7 @@ app.use('/example', express.static('templates'));
 app.use('/examples', express.static('templates'));
 
 app.get('/', async (req, res) => {
-    res.status(200).send('Welcome to Emvio! Visit /example to get started.');
+    res.status(200).send('Welcome to Transactionplatform! Visit /example to get started.');
 });
 
 const PORT = 3400;
