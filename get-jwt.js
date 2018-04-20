@@ -3,7 +3,7 @@ const axios = require('axios');
 
 async function getJWT () {
     const { data } = await axios.post(
-        'https://api.emviodev.com/user/v3/login',
+        'https://api.transactionplatformstg.com/user/v3/login',
         {
             username: process.env.API_USERNAME,
             password: process.env.PASSWORD
