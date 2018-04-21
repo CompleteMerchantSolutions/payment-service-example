@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>EMVIO Plugin Portal Example</title>
+    <title>Transactionplatform Portal Example</title>
     <style>
         .main {
             display: block;
@@ -34,16 +34,28 @@
 </head>
 <body>
 <div class="main">
+
     <span>Your Website</span>
 
-    <div class="iframe-container">
-        <span>Our Iframe</span>
-        <iframe id="iframe1"></iframe>
+    <br/><br/>
+
+    <div id="errors-container" style="display:  none, margin-top: 10px; margin-bottom: 10px; "></div>
+
+    <div id="forms-container">
+        <div class="iframe-container">
+            <span>Our Iframe</span>
+            <iframe id="iframe1"></iframe>
+        </div>
+
+        <br/><br/>
+
+        <div id="loader">Loading Form...</div>
+
+        <form id="myForm">
+            <button id="submitme">Submit Form</button>
+        </form>
     </div>
-    <div id="loader">Loading Form...</div>
-    <form id="myForm">
-        <button id="submitme">Submit Form</button>
-    </form>
+
 </div>
 
 <script>
@@ -59,8 +71,10 @@
                 window.document.getElementById('iframe1').style.display = 'block';
                 window.document.getElementById('loader').style.display = 'none';
             }
-            if (event.data.event === 'cardSaved') {
-                console.log('card saved', event.data.data);
+            if (event.data.event === 'processed') {
+                console.log('processed transaction', event.data.data);
+                var jsonStr = JSON.stringify(event.data.data, null, 1);
+                window.document.getElementById('forms-container').innerHTML = '<p>Successfully Processed Transaction.</p><code><br/>' + jsonStr + '</code>';
             }
         }
     });

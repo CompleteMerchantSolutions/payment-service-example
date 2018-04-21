@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>EMVIO Plugin Portal Example</title>
+    <title>Transactionplatform Save Card Example</title>
     <style>
         .main {
             display: block;
@@ -33,23 +33,35 @@
 </head>
 <body>
 <div class="main">
+
     <span>Your Website</span>
 
-    <div class="iframe-container">
-        <span>Our Iframe</span>
-        <iframe id="iframe1"></iframe>
+    <br/><br/>
+
+    <div id="errors-container" style="display:  none, margin-top: 10px; margin-bottom: 10px; "></div>
+
+    <div id="forms-container">
+        <div class="iframe-container">
+            <span>Our Iframe</span>
+            <iframe id="iframe1"></iframe>
+        </div>
+
+        <br/><br/>
+
+        <div id="loader">Loading Form...</div>
+
+        <form id="myForm">
+            <button id="submitme">Submit Form</button>
+        </form>
     </div>
-    <div id="loader">Loading Form...</div>
-    <form id="myForm">
-        <button id="submitme">Submit Form</button>
-    </form>
+
 </div>
 
 <script>
 
     const myForm = window.document.getElementById('myForm');
 
-    const saveCardUrl = 'https://api.emviodev.com/pay/v3/saveCard'
+    const saveCardUrl = 'https://api.transactionplatformstg.com/pay/v3/saveCard'
     const iframeDomain = saveCardUrl.match(/^http(s?):\/\/.*?(?=\/)/)[0];
 
     window.addEventListener('message', function messageListener(event) {
@@ -61,6 +73,8 @@
             }
             if (event.data.event === 'cardSaved') {
                 console.log('card saved', event.data.data);
+                var jsonStr = JSON.stringify(event.data.data, null, 1);
+                window.document.getElementById('forms-container').innerHTML = '<p>Successfully Saved Card.</p><code><br/><code>' + jsonStr + '</code>';
             }
         }
     });
