@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Transactionplatform Save Card Example</title>
+    <title>Nexio Credit Card Transaction Example</title>
     <style>
         .main {
             display: block;
@@ -61,8 +61,8 @@
 
     const myForm = window.document.getElementById('myForm');
 
-    const saveCardUrl = 'https://api.nexiopaysandbox.com/pay/v3/saveCard'
-    const iframeDomain = saveCardUrl.match(/^http(s?):\/\/.*?(?=\/)/)[0];
+    const Url = 'https://api.nexiopaysandbox.com/pay/v3'
+    const iframeDomain = Url.match(/^http(s?):\/\/.*?(?=\/)/)[0];
 
     window.addEventListener('message', function messageListener(event) {
         if (event.origin === iframeDomain) {
@@ -71,25 +71,25 @@
                 window.document.getElementById('iframe1').style.display = 'block';
                 window.document.getElementById('loader').style.display = 'none';
             }
-            if (event.data.event === 'cardSaved') {
-                console.log('card saved', event.data.data);
+            if (event.data.event === 'processed') {
+                console.log('processed', event.data.data);
                 var jsonStr = JSON.stringify(event.data.data, null, 1);
-                window.document.getElementById('forms-container').innerHTML = '<p>Successfully Saved Card.</p><code><br/><code>' + jsonStr + '</code>';
+                window.document.getElementById('forms-container').innerHTML = '<p>Successfully Processed Credit Card Transaction.</p><code><br/><code>' + jsonStr + '</code>';
             }
         }
     });
 
     function setup() {
-        fetch('http://localhost:3400/getTokenSaveCard').then(function (response) {
+        fetch('http://localhost:3400/getTokenCreditCard').then(function (response) {
             return response.text();
         }).then(function (response) {
-            const iframe = `${saveCardUrl}?token=${response}`;
+            const iframe = `${Url}?token=${response}`;
             window.document.getElementById('iframe1').src = iframe;
             return window.document.getElementById('iframe1');
         }).then((iframe) => {
             myForm.addEventListener('submit', function processPayment(event) {
                 event.preventDefault();
-                iframe.contentWindow.postMessage('posted', saveCardUrl);
+                iframe.contentWindow.postMessage('posted', Url);
                 return false;
             });
         }).catch((err) => {

@@ -10,7 +10,8 @@ async function runTransaction() {
             token: process.env.TOKENEX_TOKEN
         },
         data: {
-            amount: 12.34
+            amount: 12.34,
+			currency:'USD'
         },
         gateway: {
             name: process.env.GATEWAY_NAME
