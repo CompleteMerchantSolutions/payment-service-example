@@ -1,10 +1,10 @@
-# Plugin: Getting Started
+#Getting Started
 ## Dependencies
 * Node:
  * To install via a package manager: go to the following [link](https://nodejs.org/en/download/package-manager) and follow the instructions corresponding to your system's package manager.
  * To install via an installer: visit the following [link](https://nodejs.org/en/download/) and download your system's installer.
 
-## Obtain JSON Web Token (JWT)
+## Configuration
 1. Clone or download the example [source](hhttps://github.com/transactionplatform/payment-service-example/downloads/) and unzip.
 2. Go to location of the source directory:
 
@@ -19,96 +19,253 @@
     > cp example.env .env
 
 5. Update the following variables in .env:
+	* **API_URL** (The API URL you want to use, like https://api.nexiopaysandbox.com)
     * **USERNAME** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) username)
     * **PASSWORD** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) password)
-
-6. Run Get Json Web Token (JWT):
-
-    > node get-jwt.js
-
-    * This script will print your JSON Web Token to the console. This token will be used in the next step to create a one time use token.
-    * (Note that this token expires after one hour.)
-
-## Use the JWT to Get a One Time Use Token
-1. Update the following variables in .env:
-    * **MERCHANT_ID** (The merchant id assigned to you from CMS)
+	* **MERCHANT_ID** (The merchant id assigned to you from CMS)
     * **GATEWAY_NAME** (The name of the gateway to be used to run the transaction, e.g. 'usaepay', 'nmi')
-    * **JWT** (The JSON Web Token from the previous step.)
-2. Run get-one-time-use-token.js:
-
-    > node get-one-time-use-token.js
-
-3. This script will print out your one time use token. This token can be used for retrieving the saveCard and makePayment iframes.
-
-# Plugin: Run Transaction
-1. Follow the steps in the [Getting Started](#plugin-getting-started) section.
-2. Start the example server:
+	* **TOKENEX_TOKEN** (Provided by CMS)
+	
+# Sample : Payment Service iFrame
+## Credit Card Transaction
+1. Start the example server:
 
     > npm run start
 
     This starts a local server running on port 3400.
 
-3. To load the example iframe for running a transaction visit:  [localhost:3400/examples/makePayment.html](http://localhost:3400/examples/makePayment.html)
+3. To load the example iframe for running a transaction visit:  [localhost:3400/examples/creditCardTransaction.html](http://localhost:3400/examples/creditCardTransaction.html)
 4. The iframe is now embedded in this website and can be used to process a transaction.
 5. (Include more information about what's happening and how to run it on their own website.)
 
-# Plugin: Save Card
-1. Follow the steps in the [Getting Started](#plugin-getting-started) section.
-2. Start the example server:
+## Save Card
+1. Start the example server:
 
     > npm run start
 
     This starts a local server running on port 3400.
 
-3. To load the example iframe for running a transaction visit: [localhost:3400/examples/saveCard.html](http://localhost:3400/examples/saveCard.html)
-4. The iframe is now embedded in this website and can be used to save a card and customer information.
+2. To load the example iframe for running a transaction visit: [localhost:3400/examples/saveCard.html](http://localhost:3400/examples/saveCard.html)
+3. The iframe is now embedded in this website and can be used to save a card and customer information.
+4. (Include more information about what's happening and how to run it on their own website.)
+
+## Alipay Transaction
+1. Start the example server:
+
+    > npm run start
+
+    This starts a local server running on port 3400.
+
+2. To load the example iframe for running a transaction visit: [localhost:3400/examples/AlipayTransaction.html](http://localhost:3400/examples/AlipayTransaction.html)
+3. The iframe is now embedded in this website and can be used to save a card and customer information.
+4. (Include more information about what's happening and how to run it on their own website.)
+
+## Save eCheck
+1. Start the example server:
+
+    > npm run start
+
+    This starts a local server running on port 3400.
+
+2. To load the example iframe for running a transaction visit: [localhost:3400/examples/saveECheck.html](http://localhost:3400/examples/saveECheck.html)
+3. The iframe is now embedded in this website and can be used to save a card and customer information.
+4. (Include more information about what's happening and how to run it on their own website.)
+
+## eCheck Transaction
+1. Start the example server:
+
+    > npm run start
+
+    This starts a local server running on port 3400.
+
+3. To load the example iframe for running a transaction visit:  [localhost:3400/examples/eCheckTransaction.html](http://localhost:3400/examples/eCheckTransaction.html)
+4. The iframe is now embedded in this website and can be used to process a transaction.
 5. (Include more information about what's happening and how to run it on their own website.)
 
-# API: Getting Started
-## Dependencies
-* Node:
- * To install via a package manager: go to the following [link](https://nodejs.org/en/download/package-manager) and follow the instructions corresponding to your system's package manager.
- * To install via an installer: visit the following [link](https://nodejs.org/en/download/) and download your system's installer.
+# Sample : Payment Service
+## Save Card
+1. Run Payment-SaveCard.js
 
-## Obtain JSON Web Token (JWT)
-1. Clone or download the example [source](https://github.com/transactionplatform/payment-service-example/downloads/) and unzip.
-2. Go to location of the source directory:
+    > node Payment-SaveCard.js
 
-    > cd payment-service-examples
+2. Result will input in console. 
+3. The sample includes sample of get one time token API. 
+4. The transaction result includes token will be written into translist.json for Delete Token using. 
 
-3. Install Node modules:
+## Credit Card Transaction
+1. Run Payment-CreditCardTransaction.js
 
-    > npm install
+    > node Payment-CreditCardTransaction.js
 
-4. Copy example.env and save as .env:
+2. Result will input in console. 
+3. The transaction result includes id and amount will be written into translist.json for other API using, like Void, Refund, Capture, Get Transaction by original Id etc. 
 
-    > cp example.env .env
+## eCheck Transaction
+1. Run Payment-eCheckTransaction.js
 
-5. Update the following variables in .env:
-    * **USERNAME** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) username)
-    * **PASSWORD** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) password)
+    > node Payment-eCheckTransaction.js
 
+2. Result will input in console. 
+3. The transaction result includes id and amount will be written into translist.json for other API using, like Void, Refund, Get Transaction by transaction Id etc. 
 
-6. Run Get Json Web Token (JWT):
+## Void Transaction
+1. A successful Credit Card transaction or eCheck transaction need be made first.
+2. Run Payment-VoidTransaction.js
 
-    > node get-jwt.js
+    > node Payment-VoidTransaction.js
 
-    * This script will print your JSON Web Token to the console. This token will be used in the next step to run a transaction.
-    * (Note that this token expires after one hour.)
+3. Result will input in console. 
 
-# API: Run Transaction
-1. Follow the steps in the [Getting Started](#api-getting-started) section.
-2. Update the following variable in .env:
-    * **TOKENEX_TOKEN** (add description here)
-    * (Do merchants always need to save cards before they can do this step?)
-3. Run run-transaction.js
+## Refund Transaction
+1. A successful Credit Card transaction or eCheck transaction need be made first.
+2. Run Payment-RefundTransaction.js
 
-    > node run-transaction.js
+    > node Payment-RefundTransaction.js
 
-# API: Refund/Void
-1. Follow the steps in the [Getting Started](#api-getting-started) section.
-2. Update the following variables in .env
-    * **TOKENEX_TOKEN** (add description here)
-    * (Do merchants always need to save cards before they can do this step?)
-    * **TRANSACITON_REF_NUMBER** (The reference number of the transaction)
-3. Run run-transaction.js
+3. Result will input in console. 
+
+## Capture Transaction
+1. A successful Credit Card transaction need be made first.
+2. Run Payment-CaptureTransaction.js
+
+    > node Payment-CaptureTransaction.js
+
+3. Result will input in console. 
+
+## Delete Tokens
+1. A successful Save Card transaction need be made first.
+2. Run Payment-DeleteTokens.js
+
+    > node Payment-DeleteTokens.js
+
+3. Result will input in console. 
+4. This sample only delete one token, but actaully multi tokens deleting are supported.
+
+# Sample : Transaction Service
+## Transaction(Using Transaction Id)
+1. A successful Credit Card transaction or eCheck transaction need be made first.
+2. Run Transaction-GetTransWithId.js
+
+    > node Transaction-GetTransWithId.js
+
+3. Result will input in console. 
+4. The id use in this sample is the original id in response of Credit Card Transaction or eCheck Transaction.
+
+## Transaction
+1. A successful Transactions need be made first.
+2. Run Transaction-GetTrans.js
+
+    > node Transaction-GetTrans.js
+
+3. Result will input in console. 
+4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
+
+## Matching Transaction For FDR Chargeback
+1. Run Transaction-MatchTransForFDR.js
+
+    > node Transaction-MatchTransForFDR.js
+
+2. Result will input in console. 
+
+## Transaction Count
+1. Run Transaction-TransactionCount.js
+
+    > node Transaction-TransactionCount.js
+
+2. Result will input in console. 
+
+## Daily Transaction Summary
+1. Run Transaction-DailyTransSummary.js
+
+    > node Transaction-DailyTransSummary.js
+
+2. Result will input in console. 
+
+## Transaction Total
+1. Run Transaction-TransactionTotal.js
+
+    > node Transaction-TransactionTotal.js
+
+2. Result will input in console. 
+
+## Transaction Summary
+1. Run Transaction-TransactionSummary.js
+
+    > node Transaction-TransactionSummary.js
+
+2. Result will input in console. 
+
+## Payment Types
+1. Run Transaction-PaymentTypes.js
+
+    > node Transaction-PaymentTypes.js
+
+2. Result will input in console. 
+
+## Search Transaction
+1. Run Transaction-SearchTransaction.js
+
+    > node Transaction-SearchTransaction.js
+
+2. Result will input in console. 
+3. This sample does not include any query parameter, but actually, user can pass their own search condition with name 'search'.
+
+## Transactions
+1. Run Transaction-transactions.js
+
+    > node Transaction-transactions.js
+
+3. Result will input in console. 
+4. The result will be written into translist.json for later using, like Transaction, Refund, Void, Capture, Bulk Void and Bulk Capture.
+
+## Refund
+1. A successful Transactions need be made first.
+2. Run Transaction-RefundTransaction.js
+
+    > node Transaction-RefundTransaction.js
+
+3. Result will input in console. 
+4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
+
+## Void
+1. A successful Transactions need be made first.
+2. Run Transaction-VoidTransaction.js
+
+    > node Transaction-VoidTransaction.js
+
+3. Result will input in console. 
+4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
+
+## Capture
+1. A successful Transactions need be made first.
+2. Run Transaction-CaptureTransaction.js
+
+    > node Transaction-CaptureTransaction.js
+
+3. Result will input in console. 
+4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
+
+## Bulk Void
+1. A successful Transactions need be made first.
+2. Run Transaction-BulkVoid.js
+
+    > node Transaction-BulkVoid.js
+
+3. Result will input in console. 
+4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
+
+## Bulk Capture
+1. A successful Transactions need be made first.
+2. Run Transaction-BulkCapture.js
+
+    > node Transaction-BulkCapture.js
+
+3. Result will input in console. 
+4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
+
+# Sample: Client Side Token
+1. Run ClientSideToken.js
+
+    > node ClientSideToken.js
+
+3. Result will input in console. 
