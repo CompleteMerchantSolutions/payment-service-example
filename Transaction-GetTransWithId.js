@@ -20,7 +20,7 @@ async function runTransaction() {
         }
     };
 	
-	const url = process.env.API_URL + 'transaction/v3/{{' + JSON.parse(result).id + '}}';
+	const url = process.env.API_URL + 'transaction/v3/' + JSON.parse(result).id;
 	console.log('url: ' + url);
 	
     const { data } = await axios.get(url, config);

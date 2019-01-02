@@ -143,7 +143,7 @@
 
 # Sample : Transaction Service
 ## Transaction(Using Transaction Id)
-1. A successful Credit Card transaction or eCheck transaction need be made first.
+1. A successful Credit Transactions need be made first.
 2. Run Transaction-GetTransWithId.js
 
     > node Transaction-GetTransWithId.js
