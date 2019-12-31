@@ -5,10 +5,11 @@
   * To install via an installer: visit the following [link](https://nodejs.org/en/download/) and download your system's installer.
 
 ## Configuration
-1. Clone or download the example [source](https://github.com/transactionplatform/payment-service-example/downloads/) and unzip.
+1. [Clone or download](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+the example [source](https://https://github.com/nexiopay/payment-service-example-node/) and unzip.
 2. Go to location of the source directory:
 
-    > cd payment-service-examples
+    > cd payment-service-example-node
 
 3. Install Node modules:
 
@@ -19,14 +20,13 @@
     > cp example.env .env
 
 5. Update the following variables in .env:
-	* **API_URL** (The API URL you want to use, like https://api.nexiopaysandbox.com)
-    * **USERNAME** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) username)
-    * **PASSWORD** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) password)
-	* **MERCHANT_ID** (The merchant id assigned to you from CMS)
-    * **GATEWAY_NAME** (The name of the gateway to be used to run the transaction, e.g. 'usaepay', 'nmi')
-	* **TOKENEX_TOKEN** (Provided by CMS)
+	* **API_URL** (The API's [base URL](https://docs.nexiopay.com/#base-urls-and-environments). This will be https://api.nexiopaysandbox.com for Sandbox.)
+    * **USERNAME** (Your [dashboard.nexiopay.com](https://dashboard.nexiopay.com) username)
+    * **PASSWORD** (Your [dashboard.nexiopay.com](https://dashboard.nexiopay.com) password)
+	* **MERCHANT_ID** (The merchant ID assigned to you from Nexio)
+	* **TOKENEX_TOKEN** (Provided by Nexio)
 	
-# Sample : Payment Service iFrame
+# Sample : Payment Service Iframe
 ## Credit Card Transaction
 1. Start the example server:
 
