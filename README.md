@@ -35,9 +35,9 @@ the example [source](https://https://github.com/nexiopay/payment-service-example
 
     This starts a local server running on port 3400.
 
-3. To load the example iframe for running a transaction visit:  [localhost:3400/examples/creditCardTransaction.html](http://localhost:3400/examples/creditCardTransaction.html)
-4. The iframe is now embedded in this website and can be used to process a transaction.
-5. (Include more information about what's happening and how to run it on their own website.)
+3. The embedded iframe can be used to process a transaction.
+Load it at [localhost:3400/examples/creditCardTransaction.html](http://localhost:3400/examples/creditCardTransaction.html)
+<!--4. (Include more information about what's happening and how to run it on their own website.)-->
 
 ## Save Card
 1. Start the example server:
