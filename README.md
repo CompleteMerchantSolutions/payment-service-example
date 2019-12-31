@@ -6,7 +6,7 @@
 
 ## Configuration
 1. [Clone or download](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
-the example [source](https://https://github.com/nexiopay/payment-service-example-node/) and unzip.
+the example [source](https://https://github.com/nexiopay/payment-service-example-node/).
 2. Go to location of the source directory:
 
     > cd payment-service-example-node
@@ -28,7 +28,8 @@ the example [source](https://https://github.com/nexiopay/payment-service-example
 	
 # Sample : Payment Service Iframe
 ## Credit Card Transaction
-1. Start the example server:
+1. [Configure](#configuration) your example
+2. Start the example server:
 
     > npm run start
 
