@@ -1,11 +1,11 @@
-#Getting Started
+# Getting Started
 ## Dependencies
-* Node:
- * To install via a package manager: go to the following [link](https://nodejs.org/en/download/package-manager) and follow the instructions corresponding to your system's package manager.
- * To install via an installer: visit the following [link](https://nodejs.org/en/download/) and download your system's installer.
+* Node: 
+  * To install via a package manager: visit the following [link](https://nodejs.org/en/download/package-manager) and follow the instructions corresponding to your system's package manager.
+  * To install via an installer: visit the following [link](https://nodejs.org/en/download/) and download your system's installer.
 
 ## Configuration
-1. Clone or download the example [source](hhttps://github.com/transactionplatform/payment-service-example/downloads/) and unzip.
+1. Clone or download the example [source](https://github.com/transactionplatform/payment-service-example/downloads/) and unzip.
 2. Go to location of the source directory:
 
     > cd payment-service-examples
