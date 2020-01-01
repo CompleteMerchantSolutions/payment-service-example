@@ -1,3 +1,9 @@
+This repository includes examples to integrate with Nexio's API using Node.js, including:
+
+- [E-commerce Iframe Examples](#iframes)
+- [E-commerce API Examples](#api)
+- [Transaction Report Examples](#transaction-report-examples)
+
 # Getting Started
 ## Dependencies
 * Node: 
@@ -25,9 +31,11 @@ the example [source](https://https://github.com/nexiopay/payment-service-example
     * **PASSWORD** (Your [dashboard.nexiopay.com](https://dashboard.nexiopay.com) password)
 	* **MERCHANT_ID** (The merchant ID assigned to you from Nexio)
 	* **TOKENEX_TOKEN** (Provided by Nexio)
+	<!--Tokenex token is only required by certain endpoints..-->
 	
-# E-commerce Examples
-## Run Card Transaction
+# E-commerce
+## E-commercer Iframe Examples
+### Run Card Transaction
 1. Complete the [configuration](#configuration) steps
 2. Start the example server:
 
@@ -91,8 +99,8 @@ For a full list of available body parameters, see our [documentation](https://do
 4. The iframe is now embedded in this website and can be used to process a transaction.
 <!--5. (Include more information about what's happening and how to run it on their own website.)-->
 
-# Sample : Payment Service
-## Save Card
+## E-commerce API Examples
+### Save Card
 1. Run Payment-SaveCard.js
 
     > node Payment-SaveCard.js
@@ -101,7 +109,7 @@ For a full list of available body parameters, see our [documentation](https://do
 3. The sample includes sample of get one time token API. 
 4. The transaction result includes token will be written into translist.json for Delete Token using. 
 
-## Credit Card Transaction
+### Credit Card Transaction
 1. Run Payment-CreditCardTransaction.js
 
     > node Payment-CreditCardTransaction.js
@@ -109,7 +117,7 @@ For a full list of available body parameters, see our [documentation](https://do
 2. Result will input in console. 
 3. The transaction result includes id and amount will be written into translist.json for other API using, like Void, Refund, Capture, Get Transaction by original Id etc. 
 
-## eCheck Transaction
+### eCheck Transaction
 1. Run Payment-eCheckTransaction.js
 
     > node Payment-eCheckTransaction.js
@@ -117,7 +125,7 @@ For a full list of available body parameters, see our [documentation](https://do
 2. Result will input in console. 
 3. The transaction result includes id and amount will be written into translist.json for other API using, like Void, Refund, Get Transaction by transaction Id etc. 
 
-## Void Transaction
+### Void Transaction
 1. A successful Credit Card transaction or eCheck transaction need be made first.
 2. Run Payment-VoidTransaction.js
 
@@ -125,7 +133,7 @@ For a full list of available body parameters, see our [documentation](https://do
 
 3. Result will input in console. 
 
-## Refund Transaction
+### Refund Transaction
 1. A successful Credit Card transaction or eCheck transaction need be made first.
 2. Run Payment-RefundTransaction.js
 
@@ -133,7 +141,7 @@ For a full list of available body parameters, see our [documentation](https://do
 
 3. Result will input in console. 
 
-## Capture Transaction
+### Capture Transaction
 1. A successful Credit Card transaction need be made first.
 2. Run Payment-CaptureTransaction.js
 
@@ -141,7 +149,7 @@ For a full list of available body parameters, see our [documentation](https://do
 
 3. Result will input in console. 
 
-## Delete Tokens
+### Delete Tokens
 1. A successful Save Card transaction need be made first.
 2. Run Payment-DeleteTokens.js
 
@@ -150,7 +158,7 @@ For a full list of available body parameters, see our [documentation](https://do
 3. Result will input in console. 
 4. This sample only delete one token, but actaully multi tokens deleting are supported.
 
-# Sample : Transaction Service
+# Transaction Report Examples
 ## Transaction(Using Transaction Id)
 1. A successful Credit Transactions need be made first.
 2. Run Transaction-GetTransWithId.js
