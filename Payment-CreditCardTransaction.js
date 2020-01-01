@@ -15,7 +15,7 @@ async function runTransaction () {
         card: {
             expirationMonth: '1',
             expirationYear: '20',
-            cardHolderName: 'Captin Hammer',
+            cardHolderName: 'Captain Hammer',
             lastFour: '1111'
         },
         data: {

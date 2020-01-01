@@ -8,7 +8,7 @@ dotenv.config();
 
 async function getOneTimeUseToken (postdata) {
     const { data } = await axios.post(
-        process.env.API_URL + 'pay/v3/token',
+        process.env.API_URL + '/pay/v3/token',
         postdata,
         {
             headers: {
@@ -346,7 +346,7 @@ app.use('/example', express.static('templates'));
 app.use('/examples', express.static('templates'));
 
 app.get('/', async (req, res) => {
-    res.status(200).send('Welcome to Transactionplatform! Visit /example to get started.');
+    res.status(200).send('Welcome to Nexio\'s API Node.js integration example. See our <a href=\'https://github.com/nexiopay/payment-service-example-node\'>GitHub page</a> for help <a href=\'https://github.com/nexiopay/payment-service-example-node/tree/revisions#getting-started\'>getting started</a>.');
 });
 
 const PORT = 3400;

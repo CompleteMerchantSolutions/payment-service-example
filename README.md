@@ -26,8 +26,8 @@ the example [source](https://https://github.com/nexiopay/payment-service-example
 	* **MERCHANT_ID** (The merchant ID assigned to you from Nexio)
 	* **TOKENEX_TOKEN** (Provided by Nexio)
 	
-# Sample : Payment Service Iframe
-## Credit Card Transaction
+# E-commerce Examples
+## Run Card Transaction
 1. Complete the [configuration](#configuration) steps
 2. Start the example server:
 
@@ -35,10 +35,13 @@ the example [source](https://https://github.com/nexiopay/payment-service-example
 
     This starts a local server running on port 3400.
 
-3. The embedded iframe can now be used to process a transaction.
+3. The example iframe at [localhost:3400/examples/creditCardTransaction.html](http://localhost:3400/examples/creditCardTransaction.html)
+can now be used to process a transaction.
 
-Load it at [localhost:3400/examples/creditCardTransaction.html](http://localhost:3400/examples/creditCardTransaction.html)
 <!--4. (Include more information about what's happening and how to run it on their own website.)-->
+
+4. Customize the iframe.
+For a full list of available body parameters, see our [documentation](https://docs.nexiopay.com/)
 
 ## Save Card
 1. Complete the [configuration](#configuration) steps
