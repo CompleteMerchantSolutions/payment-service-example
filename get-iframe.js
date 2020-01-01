@@ -9,85 +9,85 @@ dotenv.config();
 async function getOneTimeUseToken (postdata) {
     const { data } = await axios.post(
         process.env.API_URL + 'pay/v3/token',
-		postdata,
+        postdata,
         {
             headers: {
-                Authorization: "Basic " + Buffer.from(process.env.API_USERNAME + ":" + process.env.PASSWORD).toString('base64')//process.env.JWT,
-            }                                         
+                Authorization: 'Basic ' + Buffer.from(process.env.API_USERNAME + ':' + process.env.PASSWORD).toString('base64')//process.env.JWT,
+            }
         }
-    );	
+    );
     return data.token;
 }
 
 app.get('/getTokenSaveCard', async (req, res) => {
     try {
-		const postdata = {
-				 data: {
-				           		paymentMethod: 'creditCard',
-				            		allowedCardTypes: [
-							                                          'visa',
-							                                          'mastercard',
-							                                          'discover',
-							                                          'amex'
-							                                        ],
-				            		amount: 1.15,
-				            		currency: 'USD',
-				            		description: 'test purchase',
-				            		customFields: {
-					                                          	custom1: 'hi mom',
-					                                          	custom2: 'P#dfk1234kdf'
-					                                        },
-				                customer: {
-				                                      invoice: '123',
-				                                      orderNumber: '456',
-				                                      customerRef: '123',
-				                                      firstName: 'buck',
-				                                      lastName: 'wild',
-				                                      billToAddressOne: '123 Street',
-				                                      billToAddressTwo: 'Suite 232',
-				                                      billToCity: 'Amarillo',
-				                                    	  billToState: 'TX',
-				                                      billToPostal: '56649',
-				                                      billToCountry: 'US'
-				                                    }
-				          },
-				  processingOptions: {
-				                                        webhookUrl: '',
-				                                        webhookFailUrl: '',
-				                                        checkFraud: true,
-				                                        verifyCvc: false,
-				                                        verifyAvs: 0,
-				                                        verboseResponse: true
-				                                  },
-				  uiOptions: {
-				                       	customTextUrl: '',
-				                        displaySubmitButton: false,
-				                        hideCvc: false,
-				                        requireCvc: true,
-				                        hideBilling: false,
-				                        limitCountriesTo: [
-								                                          'CA',
-								                                          'MX',
-								                                          'GB',
-								                                          'US'
-								                                        ]
-				                      },
-				  card: {
-				    cardHolderName: 'Kevin Batchelor'
-				  },
-				  cart: {
-				    items: [
-				      {
-				        item: 'E100',
-				        description: 'Electric Socks',
-				        quantity: 2,
-				        price: 5,
-				        type: 'sale'
-					  }
-				    ]
-				  }
-		};
-		
+        const postdata = {
+            data: {
+                paymentMethod: 'creditCard',
+                allowedCardTypes: [
+                    'visa',
+                    'mastercard',
+                    'discover',
+                    'amex'
+                ],
+                amount: 1.15,
+                currency: 'USD',
+                description: 'test purchase',
+                customFields: {
+                    custom1: 'hi mom',
+                    custom2: 'P#dfk1234kdf'
+                },
+                customer: {
+                    invoice: '123',
+                    orderNumber: '456',
+                    customerRef: '123',
+                    firstName: 'buck',
+                    lastName: 'wild',
+                    billToAddressOne: '123 Street',
+                    billToAddressTwo: 'Suite 232',
+                    billToCity: 'Amarillo',
+                    billToState: 'TX',
+                    billToPostal: '56649',
+                    billToCountry: 'US'
+                }
+            },
+            processingOptions: {
+                webhookUrl: '',
+                webhookFailUrl: '',
+                checkFraud: true,
+                verifyCvc: false,
+                verifyAvs: 0,
+                verboseResponse: true
+            },
+            uiOptions: {
+                customTextUrl: '',
+                displaySubmitButton: false,
+                hideCvc: false,
+                requireCvc: true,
+                hideBilling: false,
+                limitCountriesTo: [
+                    'CA',
+                    'MX',
+                    'GB',
+                    'US'
+                ]
+            },
+            card: {
+                cardHolderName: 'Kevin Batchelor'
+            },
+            cart: {
+                items: [
+                    {
+                        item: 'E100',
+                        description: 'Electric Socks',
+                        quantity: 2,
+                        price: 5,
+                        type: 'sale'
+                    }
+                ]
+            }
+        };
+
         const oneTimeUseToken = await getOneTimeUseToken(postdata);
         res.status(200).send(oneTimeUseToken);
     } catch (err) {
@@ -98,73 +98,73 @@ app.get('/getTokenSaveCard', async (req, res) => {
 
 app.get('/getTokenCreditCard', async (req, res) => {
     try {
-		const postdata = {
-				 data: {
-				           		paymentMethod: 'creditCard',
-				            		allowedCardTypes: [
-							                                          'visa',
-							                                          'mastercard',
-							                                          'discover',
-							                                          'amex'
-							                                        ],
-				            		amount: 1.15,
-				            		currency: 'USD',
-				            		description: 'test purchase',
-				            		customFields: {
-					                                          	custom1: 'hi mom',
-					                                          	custom2: 'P#dfk1234kdf'
-					                                        },
-				                customer: {
-				                                      invoice: '123',
-				                                      orderNumber: '456',
-				                                      customerRef: '123',
-				                                      firstName: 'buck',
-				                                      lastName: 'wild',
-				                                      billToAddressOne: '123 Street',
-				                                      billToAddressTwo: 'Suite 232',
-				                                      billToCity: 'Amarillo',
-				                                    	  billToState: 'TX',
-				                                      billToPostal: '56649',
-				                                      billToCountry: 'US'
-				                                    }
-				          },
-				  processingOptions: {
-				                                        webhookUrl: '',
-				                                        webhookFailUrl: '',
-				                                        checkFraud: true,
-				                                        verifyCvc: false,
-				                                        verifyAvs: 0,
-				                                        verboseResponse: true
-				                                  },
-				  uiOptions: {
-				                       	customTextUrl: '',
-				                        displaySubmitButton: false,
-				                        hideCvc: false,
-				                        requireCvc: true,
-				                        hideBilling: false,
-				                        limitCountriesTo: [
-								                                          'CA',
-								                                          'MX',
-								                                          'GB',
-								                                          'US'
-								                                        ]
-				                      },
-				  card: {
-				    cardHolderName: 'Cardholder Name'
-				  },
-				  cart: {
-				    items: [
-				      {
-				        item: 'E100',
-				        description: 'Electric Socks',
-				        quantity: 2,
-				        price: 5,
-				        type: 'sale'
-					  }
-				    ]
-				  }
-		};
-		
+        const postdata = {
+            data: {
+                paymentMethod: 'creditCard',
+                allowedCardTypes: [
+                    'visa',
+                    'mastercard',
+                    'discover',
+                    'amex'
+                ],
+                amount: 1.15,
+                currency: 'USD',
+                description: 'test purchase',
+                customFields: {
+                    custom1: 'hi mom',
+                    custom2: 'P#dfk1234kdf'
+                },
+                customer: {
+                    invoice: '123',
+                    orderNumber: '456',
+                    customerRef: '123',
+                    firstName: 'buck',
+                    lastName: 'wild',
+                    billToAddressOne: '123 Street',
+                    billToAddressTwo: 'Suite 232',
+                    billToCity: 'Amarillo',
+                    billToState: 'TX',
+                    billToPostal: '56649',
+                    billToCountry: 'US'
+                }
+            },
+            processingOptions: {
+                webhookUrl: '',
+                webhookFailUrl: '',
+                checkFraud: true,
+                verifyCvc: false,
+                verifyAvs: 0,
+                verboseResponse: true
+            },
+            uiOptions: {
+                customTextUrl: '',
+                displaySubmitButton: false,
+                hideCvc: false,
+                requireCvc: true,
+                hideBilling: false,
+                limitCountriesTo: [
+                    'CA',
+                    'MX',
+                    'GB',
+                    'US'
+                ]
+            },
+            card: {
+                cardHolderName: 'Cardholder Name'
+            },
+            cart: {
+                items: [
+                    {
+                        item: 'E100',
+                        description: 'Electric Socks',
+                        quantity: 2,
+                        price: 5,
+                        type: 'sale'
+                    }
+                ]
+            }
+        };
+
         const oneTimeUseToken = await getOneTimeUseToken(postdata);
         res.status(200).send(oneTimeUseToken);
     } catch (err) {
@@ -175,51 +175,51 @@ app.get('/getTokenCreditCard', async (req, res) => {
 
 app.get('/getTokenAlipay', async (req, res) => {
     try {
-		const postdata = {
-										         data: {
-										         paymentMethod: 'aliPay',
-										        amount: 1.15,
-										        currency: 'USD',
-										        description: 'test purchase',
-										        customFields: {
-										            custom1: 'hi mom',
-										            custom2: 'P#dfk1234kdf'
-										        },
-										        customer: {
-										            invoice: '123',
-										            orderNumber: '456',
-										            customerRef: '123',
-										            firstName: 'buck',
-										            lastName: 'wild',
-										            billToAddressOne: '123 Street',
-										            billToAddressTwo: 'Suite 232',
-										            billToCity: 'Amarillo',
-										            billToState: 'TX',
-										            billToPostal: '56649',
-										            billToCountry: 'US'
-										        }
-										        },
-										        processingOptions: {
-										        webhookUrl: '',
-										        webhookFailUrl: '',
-										        testMode: 'EXTERNAL'
-										        },
-										        uiOptions: {
-										        customTextUrl: ''
-										        },
-										        cart: {
-										        items: [
-										            {
-										            item: 'E100',
-										            description: 'Electric Socks',
-										            quantity: 2,
-										            price: 5,
-										            type: 'sale'
-										            }
-										        ]
-										        }
-										};
-		
+        const postdata = {
+            data: {
+                paymentMethod: 'aliPay',
+                amount: 1.15,
+                currency: 'USD',
+                description: 'test purchase',
+                customFields: {
+                    custom1: 'hi mom',
+                    custom2: 'P#dfk1234kdf'
+                },
+                customer: {
+                    invoice: '123',
+                    orderNumber: '456',
+                    customerRef: '123',
+                    firstName: 'buck',
+                    lastName: 'wild',
+                    billToAddressOne: '123 Street',
+                    billToAddressTwo: 'Suite 232',
+                    billToCity: 'Amarillo',
+                    billToState: 'TX',
+                    billToPostal: '56649',
+                    billToCountry: 'US'
+                }
+            },
+            processingOptions: {
+                webhookUrl: '',
+                webhookFailUrl: '',
+                testMode: 'EXTERNAL'
+            },
+            uiOptions: {
+                customTextUrl: ''
+            },
+            cart: {
+                items: [
+                    {
+                        item: 'E100',
+                        description: 'Electric Socks',
+                        quantity: 2,
+                        price: 5,
+                        type: 'sale'
+                    }
+                ]
+            }
+        };
+
         const oneTimeUseToken = await getOneTimeUseToken(postdata);
         res.status(200).send(oneTimeUseToken);
     } catch (err) {
@@ -230,53 +230,53 @@ app.get('/getTokenAlipay', async (req, res) => {
 
 app.get('/getTokenSaveECheck', async (req, res) => {
     try {
-		const postdata = {
-									      data: {
-									        paymentMethod: 'eCheck',
-									        amount: 1.15,
-									        currency: 'USD',
-									        description: 'test purchase',
-									        customFields: {
-									          custom1: 'hi mom',
-									          custom2: 'P#dfk1234kdf'
-									        },
-									        customer: {
-									          invoice: '123',
-									          orderNumber: '456',
-									          customerRef: '123',
-									          firstName: 'buck',
-									          lastName: 'wild',
-									          billToAddressOne: '123 Street',
-									          billToAddressTwo: 'Suite 232',
-									          billToCity: 'Amarillo',
-									          billToState: 'TX',
-									          billToPostal: '56649',
-									          billToCountry: 'US'
-									        }
-									      },
-									      processingOptions: {
-									        webhookUrl: '',
-									        webhookFailUrl: '',
-									        verboseResponse: true
-									      },
-									      uiOptions: {
-									        customTextUrl: '',
-									        displaySubmitButton: false,
-									        hideCvc: false,
-									        requireCvc: true,
-									        hideBilling: false,
-									        limitCountriesTo: [
-									          'CA',
-									          'MX',
-									          'GB',
-									          'US'
-									        ]
-									      },
-									      bank: {
-									        accountHolderName: 'Todd Risenmay'
-									      }
-									};
-		
+        const postdata = {
+            data: {
+                paymentMethod: 'eCheck',
+                amount: 1.15,
+                currency: 'USD',
+                description: 'test purchase',
+                customFields: {
+                    custom1: 'hi mom',
+                    custom2: 'P#dfk1234kdf'
+                },
+                customer: {
+                    invoice: '123',
+                    orderNumber: '456',
+                    customerRef: '123',
+                    firstName: 'buck',
+                    lastName: 'wild',
+                    billToAddressOne: '123 Street',
+                    billToAddressTwo: 'Suite 232',
+                    billToCity: 'Amarillo',
+                    billToState: 'TX',
+                    billToPostal: '56649',
+                    billToCountry: 'US'
+                }
+            },
+            processingOptions: {
+                webhookUrl: '',
+                webhookFailUrl: '',
+                verboseResponse: true
+            },
+            uiOptions: {
+                customTextUrl: '',
+                displaySubmitButton: false,
+                hideCvc: false,
+                requireCvc: true,
+                hideBilling: false,
+                limitCountriesTo: [
+                    'CA',
+                    'MX',
+                    'GB',
+                    'US'
+                ]
+            },
+            bank: {
+                accountHolderName: 'Todd Risenmay'
+            }
+        };
+
         const oneTimeUseToken = await getOneTimeUseToken(postdata);
         res.status(200).send(oneTimeUseToken);
     } catch (err) {
@@ -287,53 +287,53 @@ app.get('/getTokenSaveECheck', async (req, res) => {
 
 app.get('/getTokenECheck', async (req, res) => {
     try {
-		const postdata = {
-									      data: {
-									        paymentMethod: 'eCheck',
-									        amount: 1.15,
-									        currency: 'USD',
-									        description: 'test purchase',
-									        customFields: {
-									          custom1: 'hi mom',
-									          custom2: 'P#dfk1234kdf'
-									        },
-									        customer: {
-									          invoice: '123',
-									          orderNumber: '456',
-									          customerRef: '123',
-									          firstName: 'buck',
-									          lastName: 'wild',
-									          billToAddressOne: '123 Street',
-									          billToAddressTwo: 'Suite 232',
-									          billToCity: 'Amarillo',
-									          billToState: 'TX',
-									          billToPostal: '56649',
-									          billToCountry: 'US'
-									        }
-									      },
-									      processingOptions: {
-									        webhookUrl: '',
-									        webhookFailUrl: '',
-									        verboseResponse: true
-									      },
-									      uiOptions: {
-									        customTextUrl: '',
-									        displaySubmitButton: false,
-									        hideCvc: false,
-									        requireCvc: true,
-									        hideBilling: false,
-									        limitCountriesTo: [
-									          'CA',
-									          'MX',
-									          'GB',
-									          'US'
-									        ]
-									      },
-									      bank: {
-									        accountHolderName: 'Todd Risenmay'
-									      }
-									};
-		
+        const postdata = {
+            data: {
+                paymentMethod: 'eCheck',
+                amount: 1.15,
+                currency: 'USD',
+                description: 'test purchase',
+                customFields: {
+                    custom1: 'hi mom',
+                    custom2: 'P#dfk1234kdf'
+                },
+                customer: {
+                    invoice: '123',
+                    orderNumber: '456',
+                    customerRef: '123',
+                    firstName: 'buck',
+                    lastName: 'wild',
+                    billToAddressOne: '123 Street',
+                    billToAddressTwo: 'Suite 232',
+                    billToCity: 'Amarillo',
+                    billToState: 'TX',
+                    billToPostal: '56649',
+                    billToCountry: 'US'
+                }
+            },
+            processingOptions: {
+                webhookUrl: '',
+                webhookFailUrl: '',
+                verboseResponse: true
+            },
+            uiOptions: {
+                customTextUrl: '',
+                displaySubmitButton: false,
+                hideCvc: false,
+                requireCvc: true,
+                hideBilling: false,
+                limitCountriesTo: [
+                    'CA',
+                    'MX',
+                    'GB',
+                    'US'
+                ]
+            },
+            bank: {
+                accountHolderName: 'Todd Risenmay'
+            }
+        };
+
         const oneTimeUseToken = await getOneTimeUseToken(postdata);
         res.status(200).send(oneTimeUseToken);
     } catch (err) {
