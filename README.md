@@ -58,8 +58,10 @@ Follow the steps below to view our example e-commerce iframes.
     When you load any of the above HTML files the following happens:
     - An [E-commerce One-time-use token](https://docs.nexiopay.com/#one-time-use-token-e-commerce) is requested from Nexio.
     (You need a new one-time-use token prior to loading any iframe.)
-    - The one-time-use token is appended to the iframe's URL a query parameter called `token`.
-    - The is result is assigned to your iframe's `src` tag.
+    - The iframe is loaded:
+        - The one-time-use token is appended to the iframe's URL a query parameter called `token`.
+        - The is result is assigned to your iframe's `src` tag.
+    - An event listener is added to the form's submit button that will cause the form to submit when a user clicks submit.
       
 See our [E-commerce Flows & Operations](https://docs.nexiopay.com/#e-commerce-overview) documentation for guided tutorials,
 or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for help.
