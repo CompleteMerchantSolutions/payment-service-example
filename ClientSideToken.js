@@ -133,7 +133,7 @@ runTransaction().then((transactionResponse) => {
         if (err) {
             console.log('write json file failed: ' + err);
         } else {
-            console.log('wirte file success');
+            console.log('write file success');
         }
     });
     //write trans id into .env file
