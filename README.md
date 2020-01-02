@@ -1,14 +1,24 @@
+This repository includes examples to integrate with Nexio's API using Node.js.
+See our [documentation](https://docs.nexiopay.com/) for a complete list of available endpoints and parameters.
+
 # Getting Started
+To get started, install all the [dependencies](#dependencies), then complete the [configuration](#configuration) steps.
+Now you're ready to try out the following examples:
+- [E-commerce Iframes](#e-commerce-iframe-examples)
+- [E-commerce API Examples](#e-commerce-api-examples)
+- [Transaction Reports](#transaction-report-examples)
+
 ## Dependencies
 * Node: 
   * To install via a package manager: visit the following [link](https://nodejs.org/en/download/package-manager) and follow the instructions corresponding to your system's package manager.
   * To install via an installer: visit the following [link](https://nodejs.org/en/download/) and download your system's installer.
 
 ## Configuration
-1. Clone or download the example [source](https://github.com/transactionplatform/payment-service-example/downloads/) and unzip.
+1. [Clone or download](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+the example [source](https://https://github.com/nexiopay/payment-service-example-node/).
 2. Go to location of the source directory:
 
-    > cd payment-service-examples
+    > cd payment-service-example-node
 
 3. Install Node modules:
 
@@ -19,71 +29,45 @@
     > cp example.env .env
 
 5. Update the following variables in .env:
-	* **API_URL** (The API URL you want to use, like https://api.nexiopaysandbox.com)
-    * **USERNAME** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) username)
-    * **PASSWORD** (Your [dashboard.transactionplatform.com](https://dashboard.transactionplatform.com) password)
-	* **MERCHANT_ID** (The merchant id assigned to you from CMS)
-    * **GATEWAY_NAME** (The name of the gateway to be used to run the transaction, e.g. 'usaepay', 'nmi')
-	* **TOKENEX_TOKEN** (Provided by CMS)
+	* **API_URL** (The API's [base URL](https://docs.nexiopay.com/#base-urls-and-environments). This will be https://api.nexiopaysandbox.com for Sandbox.)
+    * **USERNAME** (Your [dashboard.nexiopay.com](https://dashboard.nexiopay.com) username)
+    * **PASSWORD** (Your [dashboard.nexiopay.com](https://dashboard.nexiopay.com) password)
+	* **MERCHANT_ID** (The merchant ID assigned to you from Nexio)
+	* **TOKENEX_TOKEN** _Optional_ (Provided by Nexio)
+	<!--Tokenex token is only required by certain endpoints-->
 	
-# Sample : Payment Service iFrame
-## Credit Card Transaction
-1. Start the example server:
+# E-commerce
+## E-commerce Iframe Examples
+Follow the steps below to view our example e-commerce iframes.
+
+1. Complete the [configuration](#configuration) steps
+
+2. Start the example server:
 
     > npm run start
 
     This starts a local server running on port 3400.
+    
+3. View the desired iframe in a browser:
+    - [Run Card Transaction Iframe](https://docs.nexiopay.com/#run-transaction-iframe): http://localhost:3400/examples/creditCardTransaction.html
+    - [Save Card Iframe](https://docs.nexiopay.com/#save-card-iframe): http://localhost:3400/examples/saveCard.html
+    - [Run E-check Transaction Iframe](https://docs.nexiopay.com/#run-e-check-transaction-iframe): http://localhost:3400/examples/eCheckTransaction.html
+    - [Save E-check Transaction Iframe](https://docs.nexiopay.com/#save-e-check-iframe): http://localhost:3400/examples/saveECheck.html
+    - [Run Alipay Transaction Iframe](https://docs.nexiopay.com/#alipay): http://localhost:3400/examples/AlipayTransaction.html
 
-3. To load the example iframe for running a transaction visit:  [localhost:3400/examples/creditCardTransaction.html](http://localhost:3400/examples/creditCardTransaction.html)
-4. The iframe is now embedded in this website and can be used to process a transaction.
-5. (Include more information about what's happening and how to run it on their own website.)
+    When you load any of the above HTML files the following happens:
+    - An [E-commerce One-time-use token](https://docs.nexiopay.com/#one-time-use-token-e-commerce) is requested from Nexio.
+    (You need a new one-time-use token prior to loading any iframe.)
+    - The iframe is loaded:
+        - The one-time-use token is appended to the iframe's URL a query parameter called `token`.
+        - The is result is assigned to your iframe's `src` tag.
+    - An event listener is added to the form's submit button that will cause the form to submit when a user clicks submit.
+      
+See our [E-commerce Flows & Operations](https://docs.nexiopay.com/#e-commerce-overview) documentation for guided tutorials,
+or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for help.
 
-## Save Card
-1. Start the example server:
-
-    > npm run start
-
-    This starts a local server running on port 3400.
-
-2. To load the example iframe for running a transaction visit: [localhost:3400/examples/saveCard.html](http://localhost:3400/examples/saveCard.html)
-3. The iframe is now embedded in this website and can be used to save a card and customer information.
-4. (Include more information about what's happening and how to run it on their own website.)
-
-## Alipay Transaction
-1. Start the example server:
-
-    > npm run start
-
-    This starts a local server running on port 3400.
-
-2. To load the example iframe for running a transaction visit: [localhost:3400/examples/AlipayTransaction.html](http://localhost:3400/examples/AlipayTransaction.html)
-3. The iframe is now embedded in this website and can be used to save a card and customer information.
-4. (Include more information about what's happening and how to run it on their own website.)
-
-## Save eCheck
-1. Start the example server:
-
-    > npm run start
-
-    This starts a local server running on port 3400.
-
-2. To load the example iframe for running a transaction visit: [localhost:3400/examples/saveECheck.html](http://localhost:3400/examples/saveECheck.html)
-3. The iframe is now embedded in this website and can be used to save a card and customer information.
-4. (Include more information about what's happening and how to run it on their own website.)
-
-## eCheck Transaction
-1. Start the example server:
-
-    > npm run start
-
-    This starts a local server running on port 3400.
-
-3. To load the example iframe for running a transaction visit:  [localhost:3400/examples/eCheckTransaction.html](http://localhost:3400/examples/eCheckTransaction.html)
-4. The iframe is now embedded in this website and can be used to process a transaction.
-5. (Include more information about what's happening and how to run it on their own website.)
-
-# Sample : Payment Service
-## Save Card
+## E-commerce API Examples
+### Save Card
 1. Run Payment-SaveCard.js
 
     > node Payment-SaveCard.js
@@ -92,7 +76,7 @@
 3. The sample includes sample of get one time token API. 
 4. The transaction result includes token will be written into translist.json for Delete Token using. 
 
-## Credit Card Transaction
+### Credit Card Transaction
 1. Run Payment-CreditCardTransaction.js
 
     > node Payment-CreditCardTransaction.js
@@ -100,7 +84,7 @@
 2. Result will input in console. 
 3. The transaction result includes id and amount will be written into translist.json for other API using, like Void, Refund, Capture, Get Transaction by original Id etc. 
 
-## eCheck Transaction
+### eCheck Transaction
 1. Run Payment-eCheckTransaction.js
 
     > node Payment-eCheckTransaction.js
@@ -108,7 +92,7 @@
 2. Result will input in console. 
 3. The transaction result includes id and amount will be written into translist.json for other API using, like Void, Refund, Get Transaction by transaction Id etc. 
 
-## Void Transaction
+### Void Transaction
 1. A successful Credit Card transaction or eCheck transaction need be made first.
 2. Run Payment-VoidTransaction.js
 
@@ -116,7 +100,7 @@
 
 3. Result will input in console. 
 
-## Refund Transaction
+### Refund Transaction
 1. A successful Credit Card transaction or eCheck transaction need be made first.
 2. Run Payment-RefundTransaction.js
 
@@ -124,7 +108,7 @@
 
 3. Result will input in console. 
 
-## Capture Transaction
+### Capture Transaction
 1. A successful Credit Card transaction need be made first.
 2. Run Payment-CaptureTransaction.js
 
@@ -132,7 +116,7 @@
 
 3. Result will input in console. 
 
-## Delete Tokens
+### Delete Tokens
 1. A successful Save Card transaction need be made first.
 2. Run Payment-DeleteTokens.js
 
@@ -141,7 +125,7 @@
 3. Result will input in console. 
 4. This sample only delete one token, but actaully multi tokens deleting are supported.
 
-# Sample : Transaction Service
+# Transaction Report Examples
 ## Transaction(Using Transaction Id)
 1. A successful Credit Transactions need be made first.
 2. Run Transaction-GetTransWithId.js

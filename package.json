@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node get-iframe.js",
     "test": "test",
-    "serve": "nodemon get-iframe.js"
+    "serve": "nodemon get-iframe.js",
+    "lint": "eslint ./ --max-warnings 0",
+    "delint": "eslint ./ --fix --max-warnings 0"
   },
   "repository": {
     "type": "git",
