@@ -1,10 +1,12 @@
-This repository includes examples to integrate with Nexio's API using Node.js, including:
-
-- [E-commerce Iframe Examples](#iframes)
-- [E-commerce API Examples](#api)
-- [Transaction Report Examples](#transaction-report-examples)
+This repository includes examples to integrate with Nexio's API using Node.js.
 
 # Getting Started
+To get started, install all the [dependencies](#dependencies), then complete the [configuration](#configuration) steps.
+Now you're ready to try out the following examples:
+- [E-commerce Iframes](#e-commerce-iframe-examples)
+- [E-commerce API Examples](#e-commerce-api-examples)
+- [Transaction Reports](#transaction-report-examples)
+
 ## Dependencies
 * Node: 
   * To install via a package manager: visit the following [link](https://nodejs.org/en/download/package-manager) and follow the instructions corresponding to your system's package manager.
@@ -30,11 +32,11 @@ the example [source](https://https://github.com/nexiopay/payment-service-example
     * **USERNAME** (Your [dashboard.nexiopay.com](https://dashboard.nexiopay.com) username)
     * **PASSWORD** (Your [dashboard.nexiopay.com](https://dashboard.nexiopay.com) password)
 	* **MERCHANT_ID** (The merchant ID assigned to you from Nexio)
-	* **TOKENEX_TOKEN** (Provided by Nexio)
+	* **TOKENEX_TOKEN** _Optional_ (Provided by Nexio)
 	<!--Tokenex token is only required by certain endpoints..-->
 	
 # E-commerce
-## E-commercer Iframe Examples
+## E-commerce Iframe Examples
 ### Run Card Transaction
 1. Complete the [configuration](#configuration) steps
 2. Start the example server:
