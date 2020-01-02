@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+// A one-time-use token is required prior to loading any iframe
 async function getOneTimeUseToken (postdata) {
     const { data } = await axios.post(
         process.env.API_URL + '/pay/v3/token',
@@ -19,6 +20,7 @@ async function getOneTimeUseToken (postdata) {
     return data.token;
 }
 
+//
 app.get('/getTokenSaveCard', async (req, res) => {
     try {
         const postdata = {

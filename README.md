@@ -1,4 +1,5 @@
 This repository includes examples to integrate with Nexio's API using Node.js.
+See our [documentation](https://docs.nexiopay.com/) for a complete list of available endpoints and parameters.
 
 # Getting Started
 To get started, install all the [dependencies](#dependencies), then complete the [configuration](#configuration) steps.
@@ -33,73 +34,35 @@ the example [source](https://https://github.com/nexiopay/payment-service-example
     * **PASSWORD** (Your [dashboard.nexiopay.com](https://dashboard.nexiopay.com) password)
 	* **MERCHANT_ID** (The merchant ID assigned to you from Nexio)
 	* **TOKENEX_TOKEN** _Optional_ (Provided by Nexio)
-	<!--Tokenex token is only required by certain endpoints..-->
+	<!--Tokenex token is only required by certain endpoints-->
 	
 # E-commerce
 ## E-commerce Iframe Examples
-### Run Card Transaction
+Follow the steps below to view our example e-commerce iframes.
+
 1. Complete the [configuration](#configuration) steps
+
 2. Start the example server:
 
     > npm run start
 
     This starts a local server running on port 3400.
+    
+3. View the desired iframe in a browser:
+    - [Run Card Transaction Iframe](https://docs.nexiopay.com/#run-transaction-iframe): http://localhost:3400/examples/creditCardTransaction.html
+    - [Save Card Iframe](https://docs.nexiopay.com/#save-card-iframe): http://localhost:3400/examples/saveCard.html
+    - [Run E-check Transaction Iframe](https://docs.nexiopay.com/#run-e-check-transaction-iframe): http://localhost:3400/examples/eCheckTransaction.html
+    - [Save E-check Transaction Iframe](https://docs.nexiopay.com/#save-e-check-iframe): http://localhost:3400/examples/saveECheck.html
+    - [Run Alipay Transaction Iframe](https://docs.nexiopay.com/#alipay): http://localhost:3400/examples/AlipayTransaction.html
 
-3. The example iframe at [localhost:3400/examples/creditCardTransaction.html](http://localhost:3400/examples/creditCardTransaction.html)
-can now be used to process a transaction.
-
-<!--4. (Include more information about what's happening and how to run it on their own website.)-->
-
-4. Customize the iframe.
-For a full list of available body parameters, see our [documentation](https://docs.nexiopay.com/)
-
-## Save Card
-1. Complete the [configuration](#configuration) steps
-2. Start the example server:
-
-    > npm run start
-
-    This starts a local server running on port 3400.
-
-3. To load the example iframe for running a transaction visit: [localhost:3400/examples/saveCard.html](http://localhost:3400/examples/saveCard.html)
-4. The iframe is now embedded in this website and can be used to save a card and customer information.
-<!--4. (Include more information about what's happening and how to run it on their own website.)-->
-
-## Alipay Transaction
-1. Complete the [configuration](#configuration) steps
-2. Start the example server:
-
-    > npm run start
-
-    This starts a local server running on port 3400.
-
-3. To load the example iframe for running a transaction visit: [localhost:3400/examples/AlipayTransaction.html](http://localhost:3400/examples/AlipayTransaction.html)
-4. The iframe is now embedded in this website and can be used to save a card and customer information.
-<!--4. (Include more information about what's happening and how to run it on their own website.)-->
-
-## Save eCheck
-1. Complete the [configuration](#configuration) steps
-2. Start the example server:
-
-    > npm run start
-
-    This starts a local server running on port 3400.
-
-3. To load the example iframe for running a transaction visit: [localhost:3400/examples/saveECheck.html](http://localhost:3400/examples/saveECheck.html)
-4. The iframe is now embedded in this website and can be used to save a card and customer information.
-<!--4. (Include more information about what's happening and how to run it on their own website.)-->
-
-## eCheck Transaction
-1. Complete the [configuration](#configuration) steps
-2. Start the example server:
-
-    > npm run start
-
-    This starts a local server running on port 3400.
-
-3. To load the example iframe for running a transaction visit:  [localhost:3400/examples/eCheckTransaction.html](http://localhost:3400/examples/eCheckTransaction.html)
-4. The iframe is now embedded in this website and can be used to process a transaction.
-<!--5. (Include more information about what's happening and how to run it on their own website.)-->
+    When you load any of the above HTML files the following happens:
+    - An [E-commerce One-time-use token](https://docs.nexiopay.com/#one-time-use-token-e-commerce) is requested from Nexio.
+    (You need a new one-time-use token prior to loading any iframe.)
+    - The one-time-use token is appended to the iframe's URL a query parameter called `token`.
+    - The is result is assigned to your iframe's `src` tag.
+      
+See our [E-commerce Flows & Operations](https://docs.nexiopay.com/#e-commerce-overview) documentation for guided tutorials,
+or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for help.
 
 ## E-commerce API Examples
 ### Save Card
