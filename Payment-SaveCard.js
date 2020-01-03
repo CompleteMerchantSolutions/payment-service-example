@@ -78,12 +78,12 @@ async function GetOneTimeToken () {
         }
     };
 
-    const { data } = await axios.post(process.env.API_URL + 'pay/v3/token', postBody, config);
+    const { data } = await axios.post(process.env.API_URL + '/pay/v3/token', postBody, config);
 
     return data.token;
 }
 
-async function runTransaction () {
+async function saveCard () {
     const OneTimeToken_token = await GetOneTimeToken();
     console.log('token: ' + OneTimeToken_token);
     const postBody = {
@@ -104,11 +104,11 @@ async function runTransaction () {
         }
     };
 
-    const { data } = await axios.post(process.env.API_URL + 'pay/v3/saveCard', postBody, config);
+    const { data } = await axios.post(process.env.API_URL + '/pay/v3/saveCard', postBody, config);
     return data;
 }
 
-runTransaction().then((transactionResponse) => {
+saveCard().then((transactionResponse) => {
     console.log(transactionResponse);
 
     var json = { tokens: [ transactionResponse.token.token ] };

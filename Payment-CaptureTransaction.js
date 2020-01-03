@@ -12,7 +12,7 @@ async function ReadTransList () {
     return await readFile('./translist.json', 'utf8');
 }
 
-async function runTransaction () {
+async function captureTransaction () {
     const postBody = await ReadTransList();
     const config = {
         headers: {
@@ -25,7 +25,7 @@ async function runTransaction () {
     return data;
 }
 
-runTransaction().then((transactionResponse) => {
+captureTransaction().then((transactionResponse) => {
     console.log(transactionResponse);
 }).catch((err) => {
     if (err && err.response) {

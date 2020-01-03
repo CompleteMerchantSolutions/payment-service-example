@@ -92,7 +92,7 @@ async function GetOneTimeToken () {
         }
     };
 
-    const { data } = await axios.post(process.env.API_URL + 'pay/v3/token', postBody, config);
+    const { data } = await axios.post(process.env.API_URL + '/pay/v3/token', postBody, config);
 
     return data.token;
 
@@ -121,7 +121,7 @@ async function runTransaction () {
         }
     };
 
-    const { data } = await axios.post(process.env.API_URL + 'pay/v3/saveCard', postBody, config);
+    const { data } = await axios.post(process.env.API_URL + '/pay/v3/saveCard', postBody, config);
     return data;
 }
 

@@ -12,7 +12,7 @@ async function ReadTransList () {
     return await readFile('./translist.json', 'utf8');
 }
 
-async function runTransaction () {
+async function voidTransaction () {
     const postBody = await ReadTransList();
     const config = {
         headers: {
@@ -20,12 +20,12 @@ async function runTransaction () {
         }
     };
 
-    const { data } = await axios.post(process.env.API_URL + 'pay/v3/void', postBody, config);
+    const { data } = await axios.post(process.env.API_URL + '/pay/v3/void', postBody, config);
 
     return data;
 }
 
-runTransaction().then((transactionResponse) => {
+voidTransaction().then((transactionResponse) => {
     console.log(transactionResponse);
 }).catch((err) => {
     if (err && err.response) {

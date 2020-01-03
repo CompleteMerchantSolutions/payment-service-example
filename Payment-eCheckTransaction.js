@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 
-async function runTransaction () {
+async function runECheckTransaction () {
     const postBody = {
         tokenex: {
             token: process.env.TOKENEX_TOKEN
@@ -44,7 +44,7 @@ async function runTransaction () {
     return data;
 }
 
-runTransaction().then((transactionResponse) => {
+runECheckTransaction().then((transactionResponse) => {
     console.log(transactionResponse);
     var json = { data: { amount: transactionResponse.amount }, id: transactionResponse.id };
     fs.writeFile('./translist.json', JSON.stringify(json), 'utf8', function (err) {
