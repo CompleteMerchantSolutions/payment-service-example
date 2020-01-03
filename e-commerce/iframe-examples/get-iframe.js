@@ -344,8 +344,8 @@ app.get('/getTokenECheck', async (req, res) => {
     }
 });
 
-app.use('/example', express.static('templates'));
-app.use('/examples', express.static('templates'));
+app.use('/example', express.static('e-commerce/iframe-examples'));
+app.use('/examples', express.static('e-commerce/iframe-examples'));
 
 app.get('/', async (req, res) => {
     res.status(200).send('Welcome to Nexio\'s API Node.js integration example. See our <a href=\'https://github.com/nexiopay/payment-service-example-node\'>GitHub page</a> for help <a href=\'https://github.com/nexiopay/payment-service-example-node/tree/revisions#getting-started\'>getting started</a>.');
