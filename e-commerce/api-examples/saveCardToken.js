@@ -85,7 +85,6 @@ async function GetOneTimeToken () {
 
 async function saveCard () {
     const OneTimeToken_token = await GetOneTimeToken();
-    console.log('token: ' + OneTimeToken_token);
     const postBody = {
         token: OneTimeToken_token,
         card: {
