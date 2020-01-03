@@ -5,72 +5,7 @@ const fs = require('fs');
 dotenv.config();
 
 async function GetOneTimeToken () {
-    const postBody = {
-        data: {
-            paymentMethod: 'creditCard',
-            allowedCardTypes: [
-                'visa',
-                'mastercard',
-                'discover',
-                'amex'
-            ],
-            amount: 1.15,
-            currency: 'USD',
-            description: 'test purchase',
-            customFields: {
-                custom1: 'hi mom',
-                custom2: 'P#dfk1234kdf'
-            },
-            customer: {
-                invoice: '123',
-                orderNumber: '456',
-                customerRef: '123',
-                firstName: 'buck',
-                lastName: 'wild',
-                billToAddressOne: '123 Street',
-                billToAddressTwo: 'Suite 232',
-                billToCity: 'Amarillo',
-                billToState: 'TX',
-                billToPostal: '56649',
-                billToCountry: 'US'
-            }
-        },
-        processingOptions: {
-            webhookUrl: '',
-            webhookFailUrl: '',
-            checkFraud: true,
-            verifyCvc: false,
-            verifyAvs: 0,
-            verboseResponse: true
-        },
-        uiOptions: {
-            customTextUrl: '',
-            displaySubmitButton: false,
-            hideCvc: false,
-            requireCvc: true,
-            hideBilling: false,
-            limitCountriesTo: [
-                'CA',
-                'MX',
-                'GB',
-                'US'
-            ]
-        },
-        card: {
-            cardHolderName: 'Kevin Batchelor'
-        },
-        cart: {
-            items: [
-                {
-                    item: 'E100',
-                    description: 'Electric Socks',
-                    quantity: 2,
-                    price: 5,
-                    type: 'sale'
-                }
-            ]
-        }
-    };
+    const postBody = {};
 
     const config = {
         headers: {
