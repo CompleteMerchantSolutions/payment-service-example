@@ -50,7 +50,7 @@ Follow the steps below to view our example e-commerce iframes.
     
 3. View the desired iframe in a browser:
     - [Run Card Transaction Iframe](https://docs.nexiopay.com/#run-transaction-iframe): http://localhost:3400/examples/creditCardTransaction.html
-    - [Save Card Iframe](https://docs.nexiopay.com/#save-card-iframe): http://localhost:3400/examples/saveCard.html
+    - [Save Card Token Iframe](https://docs.nexiopay.com/#save-card-iframe): http://localhost:3400/examples/saveCard.html
     - [Run E-check Transaction Iframe](https://docs.nexiopay.com/#run-e-check-transaction-iframe): http://localhost:3400/examples/eCheckTransaction.html
     - [Save E-check Transaction Iframe](https://docs.nexiopay.com/#save-e-check-iframe): http://localhost:3400/examples/saveECheck.html
     - [Run Alipay Transaction Iframe](https://docs.nexiopay.com/#alipay): http://localhost:3400/examples/AlipayTransaction.html
@@ -67,66 +67,98 @@ See our [E-commerce Flows & Operations](https://docs.nexiopay.com/#e-commerce-ov
 or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for help.
 
 ## E-commerce API Examples
-### Save Card
-1. Run Payment-SaveCard.js
+Integrating directly with Nexio's API allows you to preform any operation that can be done in an iframe:
+- [Save a Card Token](https://docs.nexiopay.com/#save-card)
+- [Run a Card Transaction](https://docs.nexiopay.com/#run-transaction)
+- [Create an E-check Token](https://docs.nexiopay.com/#save-e-check)
+- [Run an E-check Transaction](https://docs.nexiopay.com/#run-e-check-transaction)
 
-    > node Payment-SaveCard.js
+It also allows you to perform certain operations that cannot be done in an iframe, including:
+- [Capture a Card Transaction](https://docs.nexiopay.com/#capture-transaction)
+- [Refund a Card Transaction](https://docs.nexiopay.com/#refund-transaction)
+- [Void a Card Transaction](https://docs.nexiopay.com/#void-transaction)
+- [View a Card Token](https://docs.nexiopay.com/#view-card-token)
+- [Edit a Card Token](https://docs.nexiopay.com/#edit-card-token)
+- [Delete a Card Token](https://docs.nexiopay.com/#delete-card-token)
 
-2. Result will input in console. 
-3. The sample includes sample of get one time token API. 
-4. The transaction result includes token will be written into translist.json for Delete Token using. 
+For a complete list of available API endpoints and their parameters, see our [documentation](https://docs.nexiopay.com).
+The examples below can be used for testing as well as a starting point for integrating Nexio's Payment API into your own code base.
+
+### Save Card Token
+To run our example, follow the steps below:
+
+1. Run saveCardToken.js
+
+    > node e-commerce/api-examples/saveCardToken.js
+    
+    When you run the script the following occurs:
+    - A one-time-use token is requested
+    - The one-time-use token is used to send a request to Nexio's [Save Card](https://docs.nexiopay.com/#save-card) endpoint
+    
+**Note:** For example purposes a fake encrypted card number is used.
+When integrating into your own code base you will accept the card number through your own form and encrypt it prior to sending a request to the [Save Card](https://docs.nexiopay.com/#save-card) endpoint.
+See our [Browser-based Encryption](https://docs.nexiopay.com/#browser-based-encryption) tutorial for more information. 
+
+2. Interpret the Response
+- A success or failure response will be output to the console.
+See our [docs](https://docs.nexiopay.com/#save-card) for a 200 response example.
+- For convenience, the card token will also be saved to `translist.json`
+
+3. View or Delete the Token _(optional)_
+You may now wish to 
 
 ### Credit Card Transaction
-1. Run Payment-CreditCardTransaction.js
+1. Run runCardTransaction.js
 
-    > node Payment-CreditCardTransaction.js
+    > node e-commerce/api-examples/runCardTransaction.js
 
 2. Result will input in console. 
 3. The transaction result includes id and amount will be written into translist.json for other API using, like Void, Refund, Capture, Get Transaction by original Id etc. 
 
 ### eCheck Transaction
-1. Run Payment-eCheckTransaction.js
+1. Run runECheckTransaction.js
 
-    > node Payment-eCheckTransaction.js
+    > node e-commerce/api-examples/runECheckTransaction.js
 
 2. Result will input in console. 
 3. The transaction result includes id and amount will be written into translist.json for other API using, like Void, Refund, Get Transaction by transaction Id etc. 
 
 ### Void Transaction
 1. A successful Credit Card transaction or eCheck transaction need be made first.
-2. Run Payment-VoidTransaction.js
+2. Run voidTransaction.js
 
-    > node Payment-VoidTransaction.js
+    > node e-commerce/api-examples/voidTransaction.js
 
 3. Result will input in console. 
 
 ### Refund Transaction
 1. A successful Credit Card transaction or eCheck transaction need be made first.
-2. Run Payment-RefundTransaction.js
+2. Run refundTransaction.js
 
-    > node Payment-RefundTransaction.js
+    > node e-commerce/api-examples/refundTransaction.js
 
 3. Result will input in console. 
 
 ### Capture Transaction
 1. A successful Credit Card transaction need be made first.
-2. Run Payment-CaptureTransaction.js
+2. Run captureTransaction.js
 
-    > node Payment-CaptureTransaction.js
+    > node e-commerce/api-examples/captureTransaction.js
 
 3. Result will input in console. 
 
-### Delete Tokens
+### Delete Card Token(s)
 1. A successful Save Card transaction need be made first.
-2. Run Payment-DeleteTokens.js
+2. Run deleteCardTokens.js
 
-    > node Payment-DeleteTokens.js
+    > node e-commerce/api-examples/deleteCardTokens.js
 
 3. Result will input in console. 
 4. This sample only delete one token, but actaully multi tokens deleting are supported.
 
-# Transaction Report Examples
-## Transaction(Using Transaction Id)
+# Reports
+## Transaction Report Examples
+### Transaction(Using Transaction Id)
 1. A successful Credit Transactions need be made first.
 2. Run Transaction-GetTransWithId.js
 
@@ -135,7 +167,7 @@ or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for he
 3. Result will input in console. 
 4. The id use in this sample is the original id in response of Credit Card Transaction or eCheck Transaction.
 
-## Transaction
+### Transaction
 1. A successful Transactions need be made first.
 2. Run Transaction-GetTrans.js
 
@@ -144,49 +176,49 @@ or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for he
 3. Result will input in console. 
 4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
 
-## Matching Transaction For FDR Chargeback
+### Matching Transaction For FDR Chargeback
 1. Run Transaction-MatchTransForFDR.js
 
     > node Transaction-MatchTransForFDR.js
 
 2. Result will input in console. 
 
-## Transaction Count
+### Transaction Count
 1. Run Transaction-TransactionCount.js
 
     > node Transaction-TransactionCount.js
 
 2. Result will input in console. 
 
-## Daily Transaction Summary
+### Daily Transaction Summary
 1. Run Transaction-DailyTransSummary.js
 
     > node Transaction-DailyTransSummary.js
 
 2. Result will input in console. 
 
-## Transaction Total
+### Transaction Total
 1. Run Transaction-TransactionTotal.js
 
     > node Transaction-TransactionTotal.js
 
 2. Result will input in console. 
 
-## Transaction Summary
+### Transaction Summary
 1. Run Transaction-TransactionSummary.js
 
     > node Transaction-TransactionSummary.js
 
 2. Result will input in console. 
 
-## Payment Types
+### Payment Types
 1. Run Transaction-PaymentTypes.js
 
     > node Transaction-PaymentTypes.js
 
 2. Result will input in console. 
 
-## Search Transaction
+### Search Transaction
 1. Run Transaction-SearchTransaction.js
 
     > node Transaction-SearchTransaction.js
@@ -194,7 +226,7 @@ or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for he
 2. Result will input in console. 
 3. This sample does not include any query parameter, but actually, user can pass their own search condition with name 'search'.
 
-## Transactions
+### Transactions
 1. Run Transaction-transactions.js
 
     > node Transaction-transactions.js
@@ -202,7 +234,7 @@ or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for he
 3. Result will input in console. 
 4. The result will be written into translist.json for later using, like Transaction, Refund, Void, Capture, Bulk Void and Bulk Capture.
 
-## Refund
+### Refund
 1. A successful Transactions need be made first.
 2. Run Transaction-RefundTransaction.js
 
@@ -211,7 +243,7 @@ or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for he
 3. Result will input in console. 
 4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
 
-## Void
+### Void
 1. A successful Transactions need be made first.
 2. Run Transaction-VoidTransaction.js
 
@@ -220,7 +252,7 @@ or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for he
 3. Result will input in console. 
 4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
 
-## Capture
+### Capture
 1. A successful Transactions need be made first.
 2. Run Transaction-CaptureTransaction.js
 
@@ -229,7 +261,7 @@ or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for he
 3. Result will input in console. 
 4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
 
-## Bulk Void
+### Bulk Void
 1. A successful Transactions need be made first.
 2. Run Transaction-BulkVoid.js
 
@@ -238,7 +270,7 @@ or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for he
 3. Result will input in console. 
 4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
 
-## Bulk Capture
+### Bulk Capture
 1. A successful Transactions need be made first.
 2. Run Transaction-BulkCapture.js
 
@@ -247,7 +279,8 @@ or [contact our integrations team](https://docs.nexiopay.com/#contact-us) for he
 3. Result will input in console. 
 4. The id use in this sample is the id in response of Transactions (Transaction-transactions.js).
 
-# Sample: Client Side Token
+# Features
+## Browser-based Encryption
 1. Run ClientSideToken.js
 
     > node ClientSideToken.js
